@@ -5,8 +5,12 @@ CONFIG -= qt
 
 SOURCES += \
     viewobserver.cpp \
-    viewobservable.cpp
+    viewobservable.cpp \
+    gameobserver.cpp \
+    gameobservable.cpp
 
 HEADERS += \
     viewobserver.h \
-    viewobservable.h
+    viewobservable.h \
+    gameobserver.h \
+    gameobservable.h
