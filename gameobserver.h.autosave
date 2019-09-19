@@ -8,7 +8,6 @@ class GameObserver
 public:
     virtual GameObserver();
     virtual update();
-
 };
 
 #endif // GAMEOBSERVER_H

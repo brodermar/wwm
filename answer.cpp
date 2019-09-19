@@ -1,6 +1,16 @@
 #include "answer.h"
 
-Answer::Answer()
+Answer::Answer(std::string answer)
+{
+    this->answer = answer;
+}
+
+Answer::~Answer()
 {
 
+}
+
+std::string getAnswer()
+{
+    return this->answer;
 }

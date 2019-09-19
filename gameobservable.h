@@ -1,11 +1,22 @@
 #ifndef GAMEOBSERVABLE_H
 #define GAMEOBSERVABLE_H
 
+#include <gameobserver.h>
+#include <vector>
 
-class gameobservable
+class GameObservable
 {
+
+private:
+    std::vector<GameObserver>* observers;
+
 public:
-    gameobservable();
+    virtual GameObservable();
+    virtual ~GameObservable();
+    add(GameObserver* observer);
+    remove(GameObserver* observer);
+    notify();
+
 };
 
 #endif // GAMEOBSERVABLE_H

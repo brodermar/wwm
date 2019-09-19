@@ -7,10 +7,12 @@ SOURCES += \
     viewobserver.cpp \
     viewobservable.cpp \
     gameobserver.cpp \
-    gameobservable.cpp
+    gameobservable.cpp \
+    answer.cpp
 
 HEADERS += \
     viewobserver.h \
     viewobservable.h \
     gameobserver.h \
-    gameobservable.h
+    gameobservable.h \
+    answer.h
