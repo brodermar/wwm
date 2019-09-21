@@ -10,7 +10,7 @@ Answer::~Answer()
 
 }
 
-std::string getAnswer()
+std::string Answer::getAnswer()
 {
-    return this->answer;
+    return answer;
 }

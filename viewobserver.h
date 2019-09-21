@@ -7,8 +7,9 @@ class ViewObserver
 {
 
 public:
-    virtual ViewObserver();
-    virtual update(Answer* answer);
+    ViewObserver();
+    virtual ~ViewObserver();
+    virtual void update(Answer* answer);
 
 };
 

@@ -2,7 +2,7 @@
 
 GameObservable::GameObservable()
 {
-    this->observers = new std::vector(0);
+    this->observers = new std::vector<GameObserver>(0);
 }
 
 GameObservable::~GameObservable()
@@ -10,17 +10,17 @@ GameObservable::~GameObservable()
     delete this->observers;
 }
 
-GameObservable::add(GameObserver* observer)
+void GameObservable::add(GameObserver* observer)
 {
 
 }
 
-GameObservable::remove(GameObserver* observer)
+void GameObservable::remove(GameObserver* observer)
 {
 
 }
 
-GameObservable::notify()
+void GameObservable::notify()
 {
-    for()
+
 }

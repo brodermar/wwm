@@ -11,10 +11,10 @@ private:
     std::vector<ViewObserver> observers;
 
 public:
-    virtual ViewObservable();
-    add(ViewObserver* observer);
-    remove(ViewObserver* observer);
-    notify();
+    ViewObservable();
+    void add(ViewObserver* observer);
+    void remove(ViewObserver* observer);
+    void notify();
 
 };
 

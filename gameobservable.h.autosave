@@ -11,7 +11,7 @@ private:
     std::vector<GameObserver>* observers;
 
 public:
-    virtual GameObservable();
+    GameObservable();
     virtual ~GameObservable();
     void add(GameObserver* observer);
     void remove(GameObserver* observer);

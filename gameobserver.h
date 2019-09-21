@@ -6,9 +6,9 @@ class GameObserver
 {
 
 public:
-    virtual GameObserver();
-    virtual update();
-
+    GameObserver();
+    virtual ~GameObserver();
+    virtual void update();
 };
 
 #endif // GAMEOBSERVER_H
