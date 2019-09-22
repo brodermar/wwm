@@ -3,13 +3,15 @@
 
 #include <viewobservable.h>
 #include <gameobserver.h>
+#include <model.h>
 
 class GameConsoleView : public ViewObservable, public GameObserver
 {
 
 public:
-    GameConsoleView();
+    GameConsoleView(Model* model);
     ~GameConsoleView();
+    void run();
 
 };
 

@@ -2,6 +2,7 @@
 #define VIEWOBSERVER_H
 
 #include <answer.h>
+#include <string>
 
 class ViewObserver
 {
@@ -9,7 +10,7 @@ class ViewObserver
 public:
     ViewObserver();
     virtual ~ViewObserver();
-    virtual void update(Answer* answer);
+    virtual void update(std::string message);
 
 };
 

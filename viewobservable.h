@@ -2,6 +2,8 @@
 #define VIEWOBSERVABLE_H
 
 #include <viewobserver.h>
+
+#include <string>
 #include <set>
 #include <iterator>
 
@@ -14,9 +16,9 @@ private:
 public:
     ViewObservable();
     ~ViewObservable();
-    void add(ViewObserver* observer);
-    void remove(ViewObserver* observer);
-    void notify(Answer* answer);
+    void addObserver(ViewObserver* observer);
+    void removeObserver(ViewObserver* observer);
+    void notifyObservers(std::string message);
 
 };
 

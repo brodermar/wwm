@@ -1,8 +1,8 @@
 #include "question.h"
 
-Question::Question(std::string* question, std::string* answerA, std::string* answerB, std::string* answerC, std::string* answerD, char rightAnswer)
+Question::Question(std::string question, std::string answerA, std::string answerB, std::string answerC, std::string answerD, char rightAnswer)
 {
-    this->question = *question;
+    this->question = question;
 
     this->answerA = new Answer(answerA);
     this->answerB = new Answer(answerB);
@@ -26,7 +26,7 @@ Question::Question(std::string* question, std::string* answerA, std::string* ans
         this->rightAnswer = this->answerD;
     }
     else {
-        throw std::invalid_argument("the value \"righAnswer\" hasn't a correct value");
+        throw std::invalid_argument("the value \"rightAnswer\" hasn't a correct value");
     }
 }
 
@@ -36,6 +36,21 @@ Question::~Question()
     delete answerB;
     delete answerC;
     delete answerD;
+}
+
+Question* Question::pullNewQuestion()
+{
+    std::string question = "Wer ist der Bürgermeister von Wesel?";
+    std::string answerA = "Die Henne";
+    std::string answerB = "Der Hahn";
+    std::string answerC = "Der Esel";
+    std::string answerD = "Der Fuchs";
+    return new Question(question, answerA, answerB, answerC, answerD, 'c');
+}
+
+bool Question::evaluateAnswer(std::string answer)
+{
+    return(answer == rightAnswer->getAnswer());
 }
 
 Answer* Question::getAnswerA()
@@ -62,3 +77,5 @@ Answer* Question::getRightAnswer()
 {
     return rightAnswer;
 }
+
+

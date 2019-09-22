@@ -10,17 +10,17 @@ GameObservable::~GameObservable()
     delete this->observers;
 }
 
-void GameObservable::add(GameObserver* observer)
+void GameObservable::addObserver(GameObserver* observer)
 {
     observers->insert(observer);
 }
 
-void GameObservable::remove(GameObserver* observer)
+void GameObservable::removeObserver(GameObserver* observer)
 {
     observers->erase(observer);
 }
 
-void GameObservable::notify()
+void GameObservable::notifyObservers()
 {
    std::set<GameObserver*>::iterator iterator;
    for(iterator = observers->begin(); iterator != observers->end(); ++iterator)

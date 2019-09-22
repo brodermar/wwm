@@ -20,10 +20,10 @@ private:
     Answer* rightAnswer;
 
 public:
-    Question(std::string* question, std::string* answerA, std::string* answerB, std::string* answerC, std::string* answerD, char rightAnwser);
+    Question(std::string question, std::string answerA, std::string answerB, std::string answerC, std::string answerD, char rightAnwser);
     ~Question();
 
-    std::string* getQuestion();
+    std::string getQuestion();
 
     Answer* getAnswerA();
     Answer* getAnswerB();
@@ -31,6 +31,9 @@ public:
     Answer* getAnswerD();
 
     Answer* getRightAnswer();
+    bool evaluateAnswer(std::string answer);
+
+    static Question* pullNewQuestion();
 
 };
 

@@ -1,8 +1,8 @@
 #include "answer.h"
 
-Answer::Answer(std::string* answer)
+Answer::Answer(std::string answer)
 {
-    this->answer = *answer;
+    this->answer = answer;
 }
 
 Answer::~Answer()
@@ -10,7 +10,7 @@ Answer::~Answer()
 
 }
 
-std::string* Answer::getAnswer()
+std::string Answer::getAnswer()
 {
-    return &answer;
+    return answer;
 }

@@ -10,21 +10,21 @@ ViewObservable::~ViewObservable()
     delete this->observers;
 }
 
-void ViewObservable::add(ViewObserver* observer)
+void ViewObservable::addObserver(ViewObserver* observer)
 {
     observers->insert(observer);
 }
 
-void ViewObservable::remove(ViewObserver* observer)
+void ViewObservable::removeObserver(ViewObserver* observer)
 {
     observers->erase(observer);
 }
 
-void ViewObservable::notify(Answer* answer)
+void ViewObservable::notifyObservers(std::string message)
 {
     std::set<ViewObserver*>::iterator iterator;
     for(iterator = observers->begin(); iterator != observers->end(); ++iterator)
     {
-        (*iterator)->update(answer);
+        (*iterator)->update(message);
     }
 }

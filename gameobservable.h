@@ -14,9 +14,9 @@ private:
 public:
     GameObservable();
     ~GameObservable();
-    void add(GameObserver* observer);
-    void remove(GameObserver* observer);
-    void notify();
+    void addObserver(GameObserver* observer);
+    void removeObserver(GameObserver* observer);
+    void notifyObservers();
 
 };
 

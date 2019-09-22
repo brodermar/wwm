@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    game.cpp \
     gameconsoleview.cpp \
     gamecontroller.cpp \
     main.cpp \
@@ -16,6 +17,7 @@ SOURCES += \
     answer.cpp
 
 HEADERS += \
+    game.h \
     gameconsoleview.h \
     gamecontroller.h \
     model.h \
