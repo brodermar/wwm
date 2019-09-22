@@ -2,17 +2,18 @@
 #define GAMEOBSERVABLE_H
 
 #include <gameobserver.h>
-#include <vector>
+#include <set>
+#include <iterator>
 
 class GameObservable
 {
 
 private:
-    std::vector<GameObserver>* observers;
+    std::set<GameObserver*>* observers;
 
 public:
     GameObservable();
-    virtual ~GameObservable();
+    ~GameObservable();
     void add(GameObserver* observer);
     void remove(GameObserver* observer);
     void notify();

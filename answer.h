@@ -10,9 +10,9 @@ private:
     std::string answer;
 
 public:
-    Answer(std::string string);
+    Answer(std::string* string);
     ~Answer();
-    std::string getAnswer();
+    std::string* getAnswer();
 
 };
 

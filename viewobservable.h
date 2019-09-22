@@ -2,19 +2,21 @@
 #define VIEWOBSERVABLE_H
 
 #include <viewobserver.h>
-#include <vector>
+#include <set>
+#include <iterator>
 
 class ViewObservable
 {
 
 private:
-    std::vector<ViewObserver> observers;
+    std::set<ViewObserver*>* observers;
 
 public:
     ViewObservable();
+    ~ViewObservable();
     void add(ViewObserver* observer);
     void remove(ViewObserver* observer);
-    void notify();
+    void notify(Answer* answer);
 
 };
 
