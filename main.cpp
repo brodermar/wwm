@@ -12,4 +12,7 @@ int main(int argc, char** argv)
     view->addObserver(controller);
     model->addObserver(view);
 
+    std::thread thread_controller(controller);
+    std::thread thread_view(view);
+    thread_view.join();
 }

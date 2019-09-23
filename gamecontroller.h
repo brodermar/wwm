@@ -3,6 +3,8 @@
 
 #include <viewobserver.h>
 #include <model.h>
+#include <thread>
+#include <iostream>
 
 class GameController : public ViewObserver
 {
@@ -12,7 +14,8 @@ private:
 
 public:
     GameController(Model* model);
-    void run();
+    ~GameController();
+    void operator()() const;
 
 };
 

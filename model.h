@@ -18,11 +18,11 @@ public:
 
     Model();
     ~Model();
-    Game* getActiveGame();
+    Game* getCurrentGame();
     void quitGame();
-    void setActiveGame(Game* game);
-    bool isRunning();
-    void exit();
+    void startNewGame();
+    bool isProgramRunning();
+    void terminateProgram();
 
 };
 
