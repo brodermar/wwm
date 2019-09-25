@@ -1,2 +1,0 @@
-# wwm
-Wer Wird Millionär
