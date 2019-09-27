@@ -1,5 +1,11 @@
 #include "game.h"
 
+const int Game::rewards[] = {0, 50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 500000, 1000000};
+const int Game::MAX_COUNT = 15;
+const int Game::MIN_COUNT = 0;
+const int Game::FIRST_SECURITY_LEVEL_COUNT = 5;
+const int Game::SECOND_SECURITY_LEVEL_COUNT = 10;
+
 Game::Game()
 {
     this->curQuestion = Question::pullNewQuestion();
@@ -38,7 +44,7 @@ void Game::evaluateAnswer(std::string answer)
     if(finished == false && curQuestion->evaluateAnswer(answer))
     {
         roundCounter++;
-        curReward = rewards[roundCounter];
+        curReward = Game::rewards[roundCounter];
         if(roundCounter >= MAX_COUNT)
         {
             finished = true;

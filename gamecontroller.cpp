@@ -18,3 +18,8 @@ void GameController::operator()() const
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
     }
 }
+
+void ViewObserver::update(std::string message)
+{
+
+}

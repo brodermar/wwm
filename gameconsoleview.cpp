@@ -18,3 +18,8 @@ void GameConsoleView::operator()() const
         std::this_thread::sleep_for(std::chrono::milliseconds(2));
     }
 }
+
+void GameObserver::update()
+{
+
+}
