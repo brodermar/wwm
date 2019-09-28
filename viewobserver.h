@@ -8,7 +8,8 @@ class ViewObserver
 {
 
 public:
-    virtual void update(std::string message);
+    virtual ~ViewObserver();
+    virtual void update(std::string message) = 0;
 
 };
 

@@ -19,7 +19,7 @@ void GameConsoleView::operator()() const
     }
 }
 
-void GameObserver::update()
+void GameConsoleView::update()
 {
 
 }

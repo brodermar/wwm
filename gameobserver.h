@@ -6,7 +6,8 @@ class GameObserver
 {
 
 public:
-    virtual void update();
+    virtual ~GameObserver();
+    virtual void update() = 0;
 
 };
 

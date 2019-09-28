@@ -3,6 +3,7 @@
 GameController::GameController(Model* model)
 {
     this->model = model;
+    this->answers = new std::queue<std::string(), std::list<std::string>()>();
 }
 
 GameController::~GameController()
@@ -19,7 +20,7 @@ void GameController::operator()() const
     }
 }
 
-void ViewObserver::update(std::string message)
+void GameController::update(std::string message)
 {
-
+    this->answers.push(message);
 }

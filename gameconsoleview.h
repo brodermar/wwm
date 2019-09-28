@@ -15,8 +15,9 @@ private:
 
 public:
     GameConsoleView(Model* model);
-    ~GameConsoleView();
+    ~GameConsoleView() override;
     void operator()() const;
+    void update() override;
 
 };
 
