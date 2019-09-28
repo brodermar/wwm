@@ -14,13 +14,15 @@ class GameController : public ViewObserver
 
 private:
     Model* model;
-    std::queue<std::string, std::list<std::string>> answers;
+    std::queue<std::string, std::list<std::string>>* answers;
 
 public:
     GameController(Model* model);
     ~GameController() override;
     void operator()() const;
     void update(std::string message) override;
+    void run();
+    void operator()();
 
 };
 

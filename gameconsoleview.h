@@ -18,6 +18,8 @@ public:
     ~GameConsoleView() override;
     void operator()() const;
     void update() override;
+    void run();
+    void operator()();
 
 };
 
