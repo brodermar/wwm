@@ -21,7 +21,6 @@ public:
     ~GameController() override;
     void operator()() const;
     void update(std::string message) override;
-    void run();
     void operator()();
 
 };

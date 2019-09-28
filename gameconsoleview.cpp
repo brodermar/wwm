@@ -1,4 +1,5 @@
 #include "gameconsoleview.h"
+using namespace std;
 
 GameConsoleView::GameConsoleView(Model* model) : ViewObservable(), GameObserver()
 {
@@ -10,23 +11,21 @@ GameConsoleView::~GameConsoleView()
 
 }
 
-void GameConsoleView::run()
-{
-    while (true)
-    {
-        std::cout << "View here" << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(2));
-    }
-}
-
 void GameConsoleView::operator()()
 {
     while (true)
     {
-        std::cout << "View here" << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        cout << "View here" << endl;
+        this_thread::sleep_for(chrono::milliseconds(2));
     }
 }
+
+void GameConsoleView::output()
+{
+
+}
+
+
 
 void GameConsoleView::update()
 {
