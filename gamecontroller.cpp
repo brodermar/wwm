@@ -40,7 +40,7 @@ void GameController::operator()()
             model->notifyObservers();
             answers->pop();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     }
 }
 

@@ -10,6 +10,11 @@
 #include <thread>
 #include <iostream>
 
+#include <QApplication>
+#include <QWindow>
+#include <QLabel>
+#include <QTextEdit>
+
 #include <windows.h>
 
 class GameConsoleView : public ViewObservable, public GameObserver
@@ -17,14 +22,15 @@ class GameConsoleView : public ViewObservable, public GameObserver
 
 private:
     Model* model;
-    static void output(std::future<void> futureObj);
+    static void output(std::future<void> futureObj, unsigned int* updateCounter, int argc, char** argv);
     bool running;
+    unsigned int updateCounter;
 
 public:
     GameConsoleView(Model* model);
     ~GameConsoleView() override;
     void update() override;
-    void operator()();
+    void operator()(int argc, char** argv);
     void stop();
 
 };
