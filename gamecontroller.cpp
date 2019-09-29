@@ -3,6 +3,7 @@
 GameController::GameController(Model* model)
 {
     this->model = model;
+    this->running = true;
     this->answers = new std::queue<std::string, std::list<std::string>>();
 }
 
@@ -13,7 +14,7 @@ GameController::~GameController()
 
 void GameController::operator()()
 {
-    while (true)
+    while (running)
     {
         std::cout << "Controller here" << std::endl;
         if(!answers->empty())
@@ -46,4 +47,9 @@ void GameController::operator()()
 void GameController::update(std::string message)
 {
     this->answers->push(message);
+}
+
+void GameController::stop()
+{
+    running = false;
 }

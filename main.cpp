@@ -14,5 +14,8 @@ int main(int argc, char** argv)
 
     std::thread thread_controller(*controller);
     std::thread thread_view(*view);
+    thread_controller.join();
+    view->stop();
     thread_view.join();
+
 }
