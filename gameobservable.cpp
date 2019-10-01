@@ -13,18 +13,21 @@ GameObservable::~GameObservable()
 void GameObservable::addObserver(GameObserver* observer)
 {
     observers->insert(observer);
+    qDebug() << "added observer";
 }
 
 void GameObservable::removeObserver(GameObserver* observer)
 {
     observers->erase(observer);
+    qDebug() << "erased observer";
 }
 
 void GameObservable::notifyObservers()
 {
-   std::set<GameObserver*>::iterator iterator;
-   for(iterator = observers->begin(); iterator != observers->end(); ++iterator)
-   {
+    qDebug() << "notify called";
+    std::set<GameObserver*>::iterator iterator;
+    for(iterator = observers->begin(); iterator != observers->end(); ++iterator)
+    {
         (*iterator)->update();
-   }
+    }
 }

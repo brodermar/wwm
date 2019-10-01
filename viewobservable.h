@@ -7,6 +7,9 @@
 #include <set>
 #include <iterator>
 
+#include <QDebug>
+#include <QString>
+
 class ViewObservable
 {
 

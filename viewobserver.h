@@ -4,6 +4,9 @@
 #include <answer.h>
 #include <string>
 
+#include <QDebug>
+#include <QString>
+
 class ViewObserver
 {
 

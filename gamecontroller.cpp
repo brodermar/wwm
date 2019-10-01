@@ -4,7 +4,7 @@ GameController::GameController(Model* model)
 {
     this->model = model;
     this->running = true;
-    this->answers = new std::queue<std::string, std::list<std::string>>();
+    this->answers = new SharedQueue<std::string>();
 }
 
 GameController::~GameController()
@@ -14,9 +14,10 @@ GameController::~GameController()
 
 void GameController::operator()()
 {
+    qDebug() << "controller started";
     while (running)
     {
-        std::cout << "Controller here" << std::endl;
+//        std::cout << "Controller here" << std::endl;
         if(!answers->empty())
         {
             std::string answer = answers->front();
@@ -40,16 +41,19 @@ void GameController::operator()()
             model->notifyObservers();
             answers->pop();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(2));
     }
+    qDebug() << "controller terminated";
 }
 
 void GameController::update(std::string message)
 {
+    qDebug() << "update called with message: " << QString::fromStdString(message);
     this->answers->push(message);
 }
 
 void GameController::stop()
 {
+    qDebug() << "stop called";
     running = false;
 }

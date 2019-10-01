@@ -53,6 +53,11 @@ bool Question::evaluateAnswer(std::string answer)
     return(answer == rightAnswer->getAnswer());
 }
 
+std::string Question::getQuestion()
+{
+    return question;
+}
+
 Answer* Question::getAnswerA()
 {
     return answerA;

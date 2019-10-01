@@ -33,6 +33,7 @@ SOURCES += \
     main.cpp \
     model.cpp \
     question.cpp \
+    sharedqueue.cpp \
     viewobserver.cpp \
     viewobservable.cpp \
     gameobserver.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
     gamecontroller.h \
     model.h \
     question.h \
+    sharedqueue.h \
     viewobserver.h \
     viewobservable.h \
     gameobserver.h \

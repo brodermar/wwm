@@ -7,6 +7,7 @@ const std::string Model::START_GAME_EXP = "start";
 Model::Model()
 {
     running = true;
+    activeGame = nullptr;
 }
 
 Model::~Model()

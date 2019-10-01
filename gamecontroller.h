@@ -3,6 +3,7 @@
 
 #include <viewobserver.h>
 #include <model.h>
+#include <sharedqueue.h>
 
 #include <thread>
 #include <iostream>
@@ -10,12 +11,16 @@
 #include <string>
 #include <list>
 
+#include <QDebug>
+#include <QString>
+
 class GameController : public ViewObserver
 {
 
 private:
     Model* model;
-    std::queue<std::string, std::list<std::string>>* answers;
+    SharedQueue<std::string>* answers;
+//    std::queue<std::string, std::list<std::string>>* answers;
     bool running;
 
 public:

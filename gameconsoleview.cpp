@@ -5,7 +5,7 @@ GameConsoleView::GameConsoleView(Model* model) : ViewObservable(), GameObserver(
 {
     this->model = model;
     this->running = true;
-    this->updateCounter = 3;
+    this->updateCounter = 0;
 }
 
 GameConsoleView::~GameConsoleView()
@@ -13,49 +13,107 @@ GameConsoleView::~GameConsoleView()
 
 }
 
-void GameConsoleView::operator()(int argc, char** argv)
+void GameConsoleView::operator()()
 {
     promise<void> exitSignal;
     future<void> futureObj = exitSignal.get_future();
-    thread outputThread(&GameConsoleView::output, std::move(futureObj), &updateCounter, argc, argv);
-    while (running)
+    thread paintingThread(&GameConsoleView::repeatedPaint, std::move(futureObj), model, &updateCounter);
+    stringstream sstr;
+    string input;
+    while (running && model->isProgramRunning())
     {
-        cout << "View here" << endl;
-        this_thread::sleep_for(chrono::milliseconds(2000));
+        getline(cin, input);
+        notifyObservers(input);
+        this_thread::sleep_for(chrono::milliseconds(2));
     }
     exitSignal.set_value();
-    outputThread.join();
+    paintingThread.join();
 }
 
-void GameConsoleView::output(future<void> futureObj, unsigned int* updateCounter, int argc, char** argv)
+void GameConsoleView::repeatedPaint(std::future<void> futureObj, Model* model, unsigned int* updateCounter)
 {
-    QApplication app(argc, argv);
-
-    QTextEdit* textbox = new QTextEdit("empty");
-    textbox->resize(120, 100);
-    textbox->show();
-
-    while (futureObj.wait_for(chrono::milliseconds(1)) == future_status::timeout)
+    GameConsoleView::paint(model);
+    while(futureObj.wait_for(chrono::milliseconds(1)) == future_status::timeout)
     {
         if(*updateCounter > 0)
         {
-            QString string("View: output");
-            textbox->setText(string);
-            textbox->repaint();
+            GameConsoleView::paint(model);
             (*updateCounter)--;
         }
-        this_thread::sleep_for(chrono::milliseconds(2000));
+        this_thread::sleep_for(chrono::milliseconds(2));
     }
+//    QApplication app(argc, argv);
 
-    app.exec();
+//    QTextEdit* textbox = new QTextEdit("empty");
+//    textbox->resize(120, 100);
+//    textbox->show();
+
+//    while (futureObj.wait_for(chrono::milliseconds(1)) == future_status::timeout)
+//    {
+//        if(*updateCounter > 0)
+//        {
+//            QString string("View: output");
+//            textbox->setText(string);
+//            textbox->repaint();
+//            (*updateCounter)--;
+//        }
+//        this_thread::sleep_for(chrono::milliseconds(2000));
+//    }
+
+//    app.exec();
+}
+
+void GameConsoleView::paint(Model* model)
+{
+    stringstream sstr;
+    if(model->isProgramRunning())
+    {
+        sstr << "program status: running" << endl;
+        Game* currentGame = model->getCurrentGame();
+        if(currentGame == nullptr)
+        {
+            sstr << "game status: no game running" << endl;
+        }
+        else
+        {
+            sstr << "game status: game running" << endl;
+            sstr << endl;
+            sstr << "round cound: " << currentGame->getRoundCount() << endl;
+            sstr << "current reward: " << currentGame->getCurReward() << endl;
+            sstr << "game finished: " << currentGame->isFinished() << endl;
+            if(!currentGame->isFinished())
+            {
+                Question* currentQuestion = currentGame->getCurQuestion();
+                sstr << endl;
+                sstr << "current question: " << currentQuestion->getQuestion() << endl;
+                sstr << "answer 1: " << currentQuestion->getAnswerA()->getAnswer() << endl;
+                sstr << "answer 2: " << currentQuestion->getAnswerB()->getAnswer() << endl;
+                sstr << "answer 3: " << currentQuestion->getAnswerC()->getAnswer() << endl;
+                sstr << "answer 4: " << currentQuestion->getAnswerD()->getAnswer() << endl;
+            }
+        }
+    }
+    else
+    {
+        sstr << "program status: quit program" << endl;
+    }
+    sstr << endl;
+    sstr << "program options:" << endl;
+    sstr << "exit program: " << model->EXIT_EXP << endl;
+    sstr << "start new game: " << model->START_GAME_EXP << endl;
+    sstr << "quit game: " << model->QUIT_GAME_EXP << endl;
+    sstr << "... or type an answer" << endl;
+    cout << sstr.str();
 }
 
 void GameConsoleView::update()
 {
-
+    qDebug() << "update called";
+    updateCounter++;
 }
 
 void GameConsoleView::stop()
 {
+    qDebug() << "stop called";
     running = false;
 }
