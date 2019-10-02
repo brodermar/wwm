@@ -1,6 +1,8 @@
 #ifndef GAMECONSOLEVIEW_H
 #define GAMECONSOLEVIEW_H
 
+#pragma once
+
 #include <viewobservable.h>
 #include <gameobserver.h>
 #include <model.h>

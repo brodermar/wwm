@@ -33,12 +33,12 @@ SOURCES += \
     main.cpp \
     model.cpp \
     question.cpp \
-    sharedqueue.cpp \
     viewobserver.cpp \
     viewobservable.cpp \
     gameobserver.cpp \
     gameobservable.cpp \
-    answer.cpp
+    answer.cpp \
+    sharedqueue.tpp
 
 # The associated header file of the project.
 HEADERS += \

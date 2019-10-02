@@ -1,6 +1,8 @@
 #ifndef GAMEOBSERVABLE_H
 #define GAMEOBSERVABLE_H
 
+#pragma once
+
 #include <gameobserver.h>
 #include <set>
 #include <iterator>

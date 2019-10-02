@@ -1,6 +1,8 @@
 #ifndef GAMECONTROLLER_H
 #define GAMECONTROLLER_H
 
+#pragma once
+
 #include <viewobserver.h>
 #include <model.h>
 #include <sharedqueue.h>

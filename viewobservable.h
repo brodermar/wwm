@@ -1,6 +1,8 @@
 #ifndef VIEWOBSERVABLE_H
 #define VIEWOBSERVABLE_H
 
+#pragma once
+
 #include <viewobserver.h>
 
 #include <string>

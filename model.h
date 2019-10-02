@@ -1,6 +1,8 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#pragma once
+
 #include <gameobservable.h>
 #include <game.h>
 

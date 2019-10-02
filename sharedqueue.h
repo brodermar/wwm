@@ -1,21 +1,22 @@
 #ifndef SHAREDQUEUE_H
 #define SHAREDQUEUE_H
 
+#pragma once
+
 #include <queue>
 #include <mutex>
-#include <condition_variable>
 
-template<class T>
+template<typename T>
 class SharedQueue
 {
 
 private:
-    std::queue<T> queue;
+    std::queue<T>* queue;
     std::mutex mutex;
 
 public:
-    SharedQueue();
-    ~SharedQueue();
+    SharedQueue<T>();
+    ~SharedQueue<T>();
 
     T& front();
     void pop();
@@ -26,5 +27,7 @@ public:
     int size();
     bool empty();
 };
+
+#include "sharedqueue.tpp"
 
 #endif // SHAREDQUEUE_H

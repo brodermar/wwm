@@ -1,6 +1,8 @@
 #ifndef ANSWER_H
 #define ANSWER_H
 
+#pragma once
+
 #include <string>
 
 class Answer
