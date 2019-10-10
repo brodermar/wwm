@@ -6,6 +6,8 @@
 #include <queue>
 #include <mutex>
 
+#include <QDebug>
+
 template<typename T>
 class SharedQueue
 {

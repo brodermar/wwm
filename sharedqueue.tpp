@@ -15,6 +15,7 @@ SharedQueue<T>::~SharedQueue()
 template <typename T>
 T& SharedQueue<T>::front()
 {
+    qDebug() << "front called()" << endl;
     T emptyVal = NULL;
     T& elem = emptyVal;
     mutex.lock();
@@ -29,6 +30,7 @@ T& SharedQueue<T>::front()
 template <typename T>
 void SharedQueue<T>::pop()
 {
+    qDebug() << "pop() called" << endl;
     mutex.lock();
     if (!queue->empty())
     {
@@ -40,6 +42,7 @@ void SharedQueue<T>::pop()
 template <typename T>
 void SharedQueue<T>::push(const T& item)
 {
+    qDebug() << "push() called" << endl;
     mutex.lock();
     queue->push(item);
     mutex.unlock();
@@ -48,6 +51,7 @@ void SharedQueue<T>::push(const T& item)
 template <typename T>
 void SharedQueue<T>::push(T&& item)
 {
+    qDebug() << "push() called" << endl;
     mutex.lock();
     queue.push(item);
     mutex.unlock();
@@ -56,6 +60,7 @@ void SharedQueue<T>::push(T&& item)
 template <typename T>
 int SharedQueue<T>::size()
 {
+    qDebug() << "size() called" << endl;
     mutex.lock();
     int size = queue.size();
     mutex.unlock();
@@ -65,6 +70,7 @@ int SharedQueue<T>::size()
 template <typename T>
 bool SharedQueue<T>::empty()
 {
+    // qDebug() << "emtpy() called" << endl;
     mutex.lock();
     bool empty = queue->empty();
     mutex.unlock();

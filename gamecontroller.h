@@ -21,7 +21,7 @@ class GameController : public ViewObserver
 
 private:
     Model* model;
-    SharedQueue<std::string>* answers;
+    SharedQueue<std::string>* controlStatements;
 //    std::queue<std::string, std::list<std::string>>* answers;
     bool running;
 
