@@ -37,8 +37,7 @@ SOURCES += \
     viewobservable.cpp \
     gameobserver.cpp \
     gameobservable.cpp \
-    answer.cpp \
-    sharedqueue.tpp
+    answer.cpp
 
 # The associated header file of the project.
 HEADERS += \
