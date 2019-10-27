@@ -41,26 +41,32 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &context, con
 
 int main(int argc, char** argv)
 {
-    qInstallMessageHandler(customMessageHandler);
-    QApplication app(argc, argv);
+    qDebug() << "started program" << endl;
 
-//    QLabel* textbox = new QLabel("");
-//    textbox->resize(120, 100);
-//    textbox->show();
+    qInstallMessageHandler(customMessageHandler);
+    qDebug() << "installed message handler" << endl;
 
     Model* model = new Model();
+    qDebug() << "intialized game model" << endl;
     GameConsoleView* view = new GameConsoleView(model);
+    qDebug() << "initialized game view" << endl;
     GameController* controller = new GameController(model);
+    qDebug() << "initialized controller" << endl;
 
     view->addObserver(controller);
     model->addObserver(view);
 
     std::thread thread_controller(*controller);
     std::thread thread_view(*view);
-    thread_controller.join();
-    thread_view.join();
 
-    return app.exec();
+    thread_controller.join();
+    qDebug() << "joined controller" << endl;
+
+    thread_view.join();
+    qDebug() << "joined view" << endl;
+
+    qDebug() << "program terminated" << endl;
+    return 0;
 }
 
 

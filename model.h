@@ -1,6 +1,9 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include <thread>
+#include <mutex>
+
 #include <gameobservable.h>
 #include <game.h>
 
@@ -10,6 +13,7 @@ class Model : public GameObservable
 private:
     Game* activeGame;
     bool running;
+    std::mutex mutex;
 
 public:
     static const std::string EXIT_EXP;

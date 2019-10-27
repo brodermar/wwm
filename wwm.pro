@@ -35,9 +35,7 @@ SOURCES += \
     model.cpp \
     question.cpp \
     sharedcounter.cpp \
-    viewobserver.cpp \
     viewobservable.cpp \
-    gameobserver.cpp \
     gameobservable.cpp \
     answer.cpp
 

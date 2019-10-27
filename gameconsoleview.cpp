@@ -15,6 +15,7 @@ GameConsoleView::~GameConsoleView()
 
 void GameConsoleView::operator()()
 {
+    qDebug() << "started view" << endl;
     promise<void> exitSignal;
     future<void> futureObj = exitSignal.get_future();
     thread paintingThread(&GameConsoleView::repeatedPaint, std::move(futureObj), model, counter);
@@ -27,11 +28,14 @@ void GameConsoleView::operator()()
         this_thread::sleep_for(chrono::milliseconds(2));
     }
     exitSignal.set_value();
+    qDebug() << "wait for paining process to terminate" << endl;
     paintingThread.join();
+    qDebug() << "terminated view" << endl;
 }
 
 void GameConsoleView::repeatedPaint(std::future<void> futureObj, Model* model, SharedCounter* counter)
 {
+    qDebug() << "started painting process" << endl;
     GameConsoleView::paint(model);
     while(futureObj.wait_for(chrono::milliseconds(1)) == future_status::timeout)
     {
@@ -42,6 +46,7 @@ void GameConsoleView::repeatedPaint(std::future<void> futureObj, Model* model, S
         }
         this_thread::sleep_for(chrono::milliseconds(2));
     }
+    qDebug() << "terminated paining process" << endl;
 //    QApplication app(argc, argv);
 
 //    QTextEdit* textbox = new QTextEdit("empty");
