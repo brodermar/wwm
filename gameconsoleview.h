@@ -7,6 +7,7 @@
 #include <gameobserver.h>
 #include <model.h>
 #include <question.h>
+#include <sharedcounter.h>
 
 #include <future>
 #include <chrono>
@@ -21,6 +22,7 @@
 #include <QTextEdit>
 #include <QDebug>
 #include <QString>
+#include <QMessageLogContext>
 
 #include <windows.h>
 
@@ -29,10 +31,11 @@ class GameConsoleView : public ViewObservable, public GameObserver
 
 private:
     Model* model;
-    static void repeatedPaint(std::future<void> futureObj, Model* model, unsigned int* updateCounter);
-    static void paint(Model* model);
     bool running;
-    unsigned int updateCounter;
+    SharedCounter* counter;
+
+    static void repeatedPaint(std::future<void> futureObj, Model* model, SharedCounter* counter);
+    static void paint(Model* model);
 
 public:
     GameConsoleView(Model* model);

@@ -15,6 +15,7 @@
 
 #include <QDebug>
 #include <QString>
+#include <QMessageLogContext>
 
 class GameController : public ViewObserver
 {

@@ -10,6 +10,7 @@
 #include <iterator>
 
 #include <QDebug>
+#include <QMessageLogContext>
 #include <QString>
 
 class ViewObservable

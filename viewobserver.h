@@ -7,6 +7,7 @@
 #include <string>
 
 #include <QDebug>
+#include <QMessageLogContext>
 #include <QString>
 
 class ViewObserver

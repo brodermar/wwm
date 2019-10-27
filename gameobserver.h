@@ -1,8 +1,6 @@
 #ifndef GAMEOBSERVER_H
 #define GAMEOBSERVER_H
 
-#pragma once
-
 class GameObserver
 {
 

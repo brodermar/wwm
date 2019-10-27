@@ -7,6 +7,7 @@
 #include <mutex>
 
 #include <QDebug>
+#include <QMessageLogContext>
 
 template<typename T>
 class SharedQueue
@@ -30,14 +31,9 @@ public:
 
     T& front()
     {
-        qDebug() << "front called()" << endl;
-        T emptyVal = NULL;
-        T& elem = emptyVal;
+        qDebug() << "front() called" << endl;
         mutex.lock();
-        if(!queue->empty())
-        {
-            elem = queue->front();
-        }
+        T& elem = queue->front();
         mutex.unlock();
         return elem;
     }

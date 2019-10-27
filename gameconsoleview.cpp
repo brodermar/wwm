@@ -5,19 +5,19 @@ GameConsoleView::GameConsoleView(Model* model) : ViewObservable(), GameObserver(
 {
     this->model = model;
     this->running = true;
-    this->updateCounter = 0;
+    this->counter = new SharedCounter();
 }
 
 GameConsoleView::~GameConsoleView()
 {
-
+    delete counter;
 }
 
 void GameConsoleView::operator()()
 {
     promise<void> exitSignal;
     future<void> futureObj = exitSignal.get_future();
-    thread paintingThread(&GameConsoleView::repeatedPaint, std::move(futureObj), model, &updateCounter);
+    thread paintingThread(&GameConsoleView::repeatedPaint, std::move(futureObj), model, counter);
     stringstream sstr;
     string input;
     while (running && model->isProgramRunning())
@@ -30,15 +30,15 @@ void GameConsoleView::operator()()
     paintingThread.join();
 }
 
-void GameConsoleView::repeatedPaint(std::future<void> futureObj, Model* model, unsigned int* updateCounter)
+void GameConsoleView::repeatedPaint(std::future<void> futureObj, Model* model, SharedCounter* counter)
 {
     GameConsoleView::paint(model);
     while(futureObj.wait_for(chrono::milliseconds(1)) == future_status::timeout)
     {
-        if(*updateCounter > 0)
+        if(counter->isGreaterZero())
         {
             GameConsoleView::paint(model);
-            (*updateCounter)--;
+            counter->decrease();
         }
         this_thread::sleep_for(chrono::milliseconds(2));
     }
@@ -98,7 +98,7 @@ void GameConsoleView::paint(Model* model)
         sstr << "program status: quit program" << endl;
     }
     sstr << endl;
-    sstr << "program options:" << endl;
+    sstr << "program options: " << endl;
     sstr << "exit program: " << model->EXIT_EXP << endl;
     sstr << "start new game: " << model->START_GAME_EXP << endl;
     sstr << "quit game: " << model->QUIT_GAME_EXP << endl;
@@ -109,7 +109,7 @@ void GameConsoleView::paint(Model* model)
 void GameConsoleView::update()
 {
     qDebug() << "update called";
-    updateCounter++;
+    counter->increase();
 }
 
 void GameConsoleView::stop()

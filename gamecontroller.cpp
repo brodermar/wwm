@@ -20,23 +20,28 @@ void GameController::operator()()
 //        std::cout << "Controller here" << std::endl;
         if(!controlStatements->empty())
         {
-            qDebug() << "poll new control statement" << endl;
+            qDebug() << "poll new control statement ... " << endl;
             std::string answer = controlStatements->front();
+            qDebug() << "new control statement: " << QString::fromStdString(answer) << endl;
             if(answer == model->EXIT_EXP)
             {
+                qDebug() << "terminate program" << endl;
                 model->terminateProgram();
                 break;
             }
             else if(answer == model->QUIT_GAME_EXP)
             {
+                qDebug() << "quit game" << endl;
                 model->quitGame();
             }
             else if(answer == model->START_GAME_EXP)
             {
+                qDebug() << "start new game" << endl;
                 model->startNewGame();
             }
             else if(model->getCurrentGame() != nullptr)
             {
+                qDebug() << "evaluate answer" << endl;
                 model->getCurrentGame()->evaluateAnswer(answer);
             }
             model->notifyObservers();
