@@ -1,24 +1,37 @@
 #ifndef SHAREDQUEUE_H
 #define SHAREDQUEUE_H
 
-#pragma once
-
 #include <queue>
 #include <mutex>
 
 #include <QDebug>
 #include <QMessageLogContext>
 
+
 template<typename T>
+/**
+ * @brief The SharedQueue class
+ */
 class SharedQueue
 {
 
 private:
+
+    /**
+     * @brief queue
+     */
     std::queue<T>* queue;
+
+    /**
+     * @brief mutex
+     */
     std::mutex mutex;
 
 public:
 
+    /**
+     * @brief SharedQueue
+     */
     SharedQueue()
     {
         this->queue = new std::queue<T>();
@@ -29,6 +42,10 @@ public:
         delete queue;
     }
 
+    /**
+     * @brief front
+     * @return
+     */
     T& front()
     {
         qDebug() << "front() called" << endl;
@@ -38,6 +55,9 @@ public:
         return elem;
     }
 
+    /**
+     * @brief pop
+     */
     void pop()
     {
         qDebug() << "pop() called" << endl;
@@ -49,6 +69,10 @@ public:
         mutex.unlock();
     }
 
+    /**
+     * @brief push
+     * @param item
+     */
     void push(const T& item)
     {
         qDebug() << "push() called" << endl;
@@ -57,6 +81,10 @@ public:
         mutex.unlock();
     }
 
+    /**
+     * @brief push
+     * @param item
+     */
     void push(T&& item)
     {
         qDebug() << "push() called" << endl;
@@ -65,6 +93,10 @@ public:
         mutex.unlock();
     }
 
+    /**
+     * @brief size
+     * @return
+     */
     int size()
     {
         qDebug() << "size() called" << endl;
@@ -74,6 +106,10 @@ public:
         return size;
     }
 
+    /**
+     * @brief empty
+     * @return
+     */
     bool empty()
     {
         // qDebug() << "emtpy() called" << endl;

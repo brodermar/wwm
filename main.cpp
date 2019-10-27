@@ -10,7 +10,9 @@
 #include <thread>
 #include <mutex>
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
+#include <windows.h>
 
 void customMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
