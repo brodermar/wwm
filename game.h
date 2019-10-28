@@ -5,7 +5,12 @@
 #include <string>
 
 /**
- * @brief The Game class
+ * @brief The Game class is part of the model and presesents one game.
+ *
+ * A game encapsulates its behaviour the it's status can be manipulated only
+ * over a couple of functions.
+ *
+ * @author Mark Broderius
  */
 class Game
 {
@@ -13,92 +18,97 @@ class Game
 private:
 
     /**
-     * @brief rewards
+     * @brief rewards the rewards in their order allocated to the individual rounds
      */
     static const int rewards[];
 
     /**
-     * @brief MAX_COUNT
+     * @brief MAX_COUNT the maximum round count
      */
     static const int MAX_COUNT;
 
     /**
-     * @brief MIN_COUNT
+     * @brief MIN_COUNT the minimum round count
      */
     static const int MIN_COUNT;
 
     /**
-     * @brief FIRST_SECURITY_LEVEL_COUNT
+     * @brief FIRST_SECURITY_LEVEL_COUNT the round count of 
+     * the first security level
      */
     static const int FIRST_SECURITY_LEVEL_COUNT;
 
     /**
-     * @brief SECOND_SECURITY_LEVEL_COUNT
+     * @brief SECOND_SECURITY_LEVEL_COUNT the round count of 
+     * the second security level
      */
     static const int SECOND_SECURITY_LEVEL_COUNT;
 
     /**
-     * @brief curQuestion
+     * @brief curQuestion the current question of the current 
+     * round
      */
     Question* curQuestion;
 
     /**
-     * @brief curReward
+     * @brief curReward the current reward of the current round
+     * or the final reward, if the the game is finished
      */
     int curReward;
 
     /**
-     * @brief roundCounter
+     * @brief roundCounter the count of the current round
      */
     int roundCounter;
 
     /**
-     * @brief finished
+     * @brief finished true, if the game is finished, false else
      */
     bool finished;
 
 public:
 
     /**
-     * @brief Game
+     * @brief Game Constructs a new game
      */
     Game();
 
     ~Game();
 
     /**
-     * @brief isFinished
-     * @return
+     * @brief isFinished returns wether the game is finished or not
+     * @return true, if the game is finished, false else
      */
     bool isFinished();
 
     /**
-     * @brief getCurReward
-     * @return
+     * @brief getCurReward returns the current reward
+     * @return the current reward
      */
     int getCurReward();
 
     /**
-     * @brief getRoundCount
-     * @return
+     * @brief getRoundCount returns the current round count
+     * @return the current round count
      */
     int getRoundCount();
 
     /**
-     * @brief getCurQuestion
-     * @return
+     * @brief getCurQuestion returns the current question
+     * @return the current question
      */
     Question* getCurQuestion();
 
     /**
-     * @brief evaluateAnswer
-     * @param answer
+     * @brief evaluateAnswer evaluates an answer with the current
+     * question, the status of the game will be changed
+     * @param answer an answer string
      */
     void evaluateAnswer(std::string answer);
 
     /**
-     * @brief startNewGame
-     * @return
+     * @brief startNewGame creates and returns a new game
+     * @return a new game
      */
     static Game* startNewGame();
 
