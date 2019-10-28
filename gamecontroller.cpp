@@ -17,7 +17,6 @@ void GameController::operator()()
     qDebug() << "controller started";
     while (running)
     {
-//        std::cout << "Controller here" << std::endl;
         if(!controlStatements->empty())
         {
             qDebug() << "poll new control statement ... " << endl;

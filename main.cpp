@@ -14,6 +14,21 @@
 #include <stdlib.h>
 #include <windows.h>
 
+/**
+ * @brief customMessageHandler defines a custom message handler to format qt messages and
+ * redirect them to stderr.
+ *
+ * The message handler have to be installed by calling qInstallMessageHandler(customMessageHandler)
+ * even before the actual qt application. At the same time it is not necessary at all to run a
+ * qt application. The message handler still works without.
+ *
+ * You access the handler automatically by using the qt logging methods linke qDebug().
+ *
+ * @param type a QtMsgType
+ * @param context the qt message log context; include <QMessageLogContext> header in the classes
+ *        you need information about
+ * @param msg a QString message
+ */
 void customMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     std::mutex mutex;
@@ -41,6 +56,12 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &context, con
     mutex.unlock();
 }
 
+/**
+ * @brief main runs the application
+ * @param argc the command line argument count
+ * @param argv the command line arguments
+ * @return the exit status of the application
+ */
 int main(int argc, char** argv)
 {
     qDebug() << "started program" << endl;
