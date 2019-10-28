@@ -12,7 +12,8 @@
 #include <QString>
 
 /**
- * @brief The ViewObservable class
+ * @brief The ViewObservable class represents the subject side of the
+ * observer pattern for view observers
  */
 class ViewObservable
 {
@@ -20,34 +21,38 @@ class ViewObservable
 private:
 
     /**
-     * @brief observers
+     * @brief observers a set of view observers
      */
     std::set<ViewObserver*>* observers;
 
 public:
 
     /**
-     * @brief ViewObservable
+     * @brief ViewObservable constructs a new view observable
      */
     ViewObservable();
 
     ~ViewObservable();
 
     /**
-     * @brief addObserver
-     * @param observer
+     * @brief addObserver register a new observer, this means 
+     * the observer will be added to the set of observers
+     * @param observer a view observer
      */
     void addObserver(ViewObserver* observer);
 
     /**
-     * @brief removeObserver
-     * @param observer
+     * @brief removeObserver unregister a observer, this means
+     * the observer will be removed from the set of observers
+     * if present
+     * @param observer a view observer
      */
     void removeObserver(ViewObserver* observer);
 
     /**
-     * @brief notifyObservers
-     * @param message
+     * @brief notifyObservers calls update(std::string message) 
+     * on each registered observer
+     * @param message a message string
      */
     void notifyObservers(std::string message);
 

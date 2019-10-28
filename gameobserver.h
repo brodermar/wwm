@@ -2,7 +2,8 @@
 #define GAMEOBSERVER_H
 
 /**
- * @brief The GameObserver class
+ * @brief The GameObserver class represents the observer side of the 
+ * observer patter for game observers
  */
 class GameObserver
 {
@@ -12,7 +13,8 @@ public:
     virtual ~GameObserver(){}
 
     /**
-     * @brief update
+     * @brief update will be called by a instance of GameObservable if
+     * this observer is registered
      */
     virtual void update() = 0;
 
