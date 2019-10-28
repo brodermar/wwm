@@ -8,7 +8,8 @@
 #include <QMessageLogContext>
 
 /**
- * @brief The SharedCounter class
+ * @brief The SharedCounter class represents a thread safe counter, wrapping
+ * an unsigned int with the help of a std::mutex object.
  */
 class SharedCounter
 {
@@ -16,38 +17,38 @@ class SharedCounter
 private:
 
     /**
-     * @brief counter
+     * @brief counter the unterlying counter
      */
     unsigned int counter;
 
     /**
-     * @brief mutex
+     * @brief mutex a std::mutex object to lock the access to the counter
      */
     std::mutex mutex;
 
 public:
 
     /**
-     * @brief SharedCounter
+     * @brief SharedCounter constructs a new counter, it will be initialized with 0
      */
     SharedCounter();
 
     ~SharedCounter();
 
     /**
-     * @brief increase
+     * @brief increase increases the counter
      */
     void increase();
 
     /**
-     * @brief decrease
+     * @brief decrease decreases the counter if possible
      * @return
      */
     bool decrease();
 
     /**
-     * @brief isGreaterZero
-     * @return
+     * @brief isGreaterZero checks if the counter is >0
+     * @return true, if the counter is largner than 0, false else
      */
     bool isGreaterZero();
 

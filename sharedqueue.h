@@ -10,7 +10,10 @@
 
 template<typename T>
 /**
- * @brief The SharedQueue class
+ * @brief The SharedQueue class represents a thread safe version of a std::queue.
+ *
+ * SharedQueue therefore wraps a std::queue and makes the access thread safe by 
+ * locking with a std::mutex object.
  */
 class SharedQueue
 {
@@ -18,19 +21,20 @@ class SharedQueue
 private:
 
     /**
-     * @brief queue
+     * @brief queue the underlaying std::queue of the shared queue
      */
     std::queue<T>* queue;
 
     /**
-     * @brief mutex
+     * @brief mutex a std::mutex object to lock the access to the std::queue
      */
     std::mutex mutex;
 
 public:
 
     /**
-     * @brief SharedQueue
+     * @brief SharedQueue constructs a new shared queue with
+     * a underlying std::queue
      */
     SharedQueue()
     {
@@ -43,8 +47,8 @@ public:
     }
 
     /**
-     * @brief front
-     * @return
+     * @brief front calls front() on the unerlying std::queue
+     * @return the element returned by front() on std::queue
      */
     T& front()
     {
@@ -56,7 +60,7 @@ public:
     }
 
     /**
-     * @brief pop
+     * @brief pop calls pop() on the unerlying std::queue
      */
     void pop()
     {
@@ -70,8 +74,8 @@ public:
     }
 
     /**
-     * @brief push
-     * @param item
+     * @brief push calls push() on the underlying std::queue
+     * @param item the element pushed calling push() on std::queue
      */
     void push(const T& item)
     {
@@ -82,8 +86,8 @@ public:
     }
 
     /**
-     * @brief push
-     * @param item
+     * @brief push calls push() on the underlying std::queue
+     * @param item the element pushed calling push() on std::queue
      */
     void push(T&& item)
     {
@@ -94,8 +98,8 @@ public:
     }
 
     /**
-     * @brief size
-     * @return
+     * @brief size calls size() on the underlying std::queue
+     * @return the size of the underlying std::queue
      */
     int size()
     {
@@ -107,8 +111,8 @@ public:
     }
 
     /**
-     * @brief empty
-     * @return
+     * @brief empty true, if the underlying std::queue is empty, false else
+     * @return true or false
      */
     bool empty()
     {
