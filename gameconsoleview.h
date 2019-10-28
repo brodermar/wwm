@@ -25,7 +25,7 @@
 #include <windows.h>
 
 /**
- * @brief The GameConsoleView class represents a simple view console
+ * @brief The GameConsoleView class represents a simple console view
  * view for the program.
  *
  * GameConsoleView works as an executeable and therefore it overrides

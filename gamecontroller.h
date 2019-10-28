@@ -16,7 +16,12 @@
 #include <QMessageLogContext>
 
 /**
- * @brief The GameController class
+ * @brief The GameController class manages the command coming from
+ * the view and manipulates the model if possible and necessary. 
+ *
+ * The controller with the model together defines the game logic and
+ * works as an executeable. It therefore overrides operator()(). Start
+ * it as a thread!.
  */
 class GameController : public ViewObserver
 {
@@ -24,43 +29,45 @@ class GameController : public ViewObserver
 private:
 
     /**
-     * @brief model
+     * @brief model the underlaing model of the controller
      */
     Model* model;
 
     /**
-     * @brief controlStatements
+     * @brief controlStatements a queue of control statements, added
+     * by the update(std::string) function.
      */
     SharedQueue<std::string>* controlStatements;
 
     /**
-     * @brief running
+     * @brief running true, if the controller is running, false else
      */
     bool running;
 
 public:
 
     /**
-     * @brief GameController
-     * @param model
+     * @brief GameController constructs a new controller referring to a model
+     * @param model a data model
      */
     GameController(Model* model);
 
     ~GameController() override;
 
     /**
-     * @brief update
-     * @param message
+     * @brief update add the string to the shared queue of control statements
+     * to be evaluated later
+     * @param message a control statement, defined in the data model
      */
     void update(std::string message) override;
 
     /**
-     * @brief operator ()
+     * @brief operator() defines the thread behaviour of the controller
      */
     void operator()();
 
     /**
-     * @brief stop
+     * @brief stop stops the controller thread (operator()() function)
      */
     void stop();
 
