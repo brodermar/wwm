@@ -3,7 +3,7 @@
 GameController::GameController(Model* model)
 {
     this->model = model;
-    this->running = true;
+    //this->running = true;
     this->controlStatements = new SharedQueue<std::string>();
     qDebug() << "initialized new GameController" << endl;
 }
@@ -13,10 +13,19 @@ GameController::~GameController()
     qDebug() << "~GameController() called" << endl;
 }
 
+GameController:: GameController(const GameController& gameController)
+{
+    this->model = gameController.model;
+    //this->running = gameController.running;
+    this->controlStatements = gameController.controlStatements;
+    qDebug() << "GameController(const GameController& gameController) called" << endl;
+}
+
 void GameController::operator()()
 {
+    //std::future<void> futureObj = exitSignal.get_future();
     qDebug() << "controller started";
-    while (running)
+    while (true)
     {
         if(!controlStatements->empty())
         {
@@ -58,8 +67,8 @@ void GameController::update(std::string message)
     this->controlStatements->push(message);
 }
 
-void GameController::stop()
-{
-    qDebug() << "stop called";
-    running = false;
-}
+//void GameController::stop()
+//{
+//    qDebug() << "stop called";
+//    exitSignal.set_value();
+//}

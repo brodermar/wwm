@@ -10,6 +10,9 @@
 #include <queue>
 #include <string>
 #include <list>
+#include <mutex>
+#include <future>
+#include <chrono>
 
 #include <QDebug>
 #include <QString>
@@ -42,7 +45,9 @@ private:
     /**
      * @brief running true, if the controller is running, false else
      */
-    bool running;
+//    bool running;
+
+//    std::promise<void> exitSignal;
 
 public:
 
@@ -53,6 +58,8 @@ public:
     GameController(Model* model);
 
     ~GameController() override;
+
+    GameController(const GameController& gameController);
 
     /**
      * @brief update add the string to the shared queue of control statements
@@ -69,7 +76,7 @@ public:
     /**
      * @brief stop stops the controller thread (operator()() function)
      */
-    void stop();
+//    void stop();
 
 };
 

@@ -14,6 +14,7 @@ GameObservable::~GameObservable()
 GameObservable::GameObservable(const GameObservable& gameObservable)
 {
     observers = gameObservable.observers;
+    qDebug() << "GameObservable(const GameObservable& gameObservable) called" << endl;
 }
 
 void GameObservable::addObserver(GameObserver* observer)

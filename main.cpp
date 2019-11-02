@@ -6,6 +6,7 @@
 #include <gamecontroller.h>
 #include <model.h>
 #include <gameconsoleview.h>
+#include <mainwindow.h>
 
 #include <thread>
 #include <mutex>
@@ -69,27 +70,37 @@ int main(int argc, char** argv)
     qInstallMessageHandler(customMessageHandler);
     qDebug() << "installed message handler" << endl;
 
+    QApplication app(argc, argv);
+    qDebug() << "initialized q application" << endl;
+
     Model* model = new Model();
     qDebug() << "intialized game model" << endl;
-    GameConsoleView* view = new GameConsoleView(model);
-    qDebug() << "initialized game view" << endl;
     GameController* controller = new GameController(model);
     qDebug() << "initialized controller" << endl;
 
-    view->addObserver(controller);
-    model->addObserver(view);
+    //    GameConsoleView* view = new GameConsoleView(model);
+    MainWindow mainWindow(model);
+    mainWindow.show();
+    qDebug() << "initialized game view" << endl;
+
+    mainWindow.addObserver(controller);
+    model->addObserver(&mainWindow);
 
     std::thread thread_controller(*controller);
-    std::thread thread_view(*view);
+//    std::thread thread_view(*view);
 
+    int appStatus = app.exec();
+    qDebug() << "joined view" << endl;
+
+    controller->update("exit");
     thread_controller.join();
     qDebug() << "joined controller" << endl;
 
-    thread_view.join();
-    qDebug() << "joined view" << endl;
+//    thread_view.join();
+//    qDebug() << "joined view" << endl;
 
     qDebug() << "program terminated" << endl;
-    return 0;
+    return appStatus;
 }
 
 

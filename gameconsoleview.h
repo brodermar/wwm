@@ -45,7 +45,7 @@ private:
     /**
      * @brief running true, if the view is running, false else
      */
-    bool running;
+    //bool running;
 
     /**
      * @brief counter a threadsafe counter to count the calls of
@@ -98,7 +98,7 @@ public:
     /**
      * @brief stop stops the view thread (operator()() function)
      */
-    void stop();
+    //void stop();
 
 };
 

@@ -1,10 +1,12 @@
 #include "gameconsoleview.h"
 using namespace std;
 
-GameConsoleView::GameConsoleView(Model* model) : ViewObservable(), GameObserver()
+GameConsoleView::GameConsoleView(Model* model) :
+    ViewObservable(),
+    GameObserver()
 {
     this->model = model;
-    this->running = true;
+//    this->running = true;
     this->counter = new SharedCounter();
     qDebug() << "initialized new GameConsoleView" << endl;
 }
@@ -23,7 +25,7 @@ void GameConsoleView::operator()()
     thread paintingThread(&GameConsoleView::repeatedPaint, std::move(futureObj), model, counter);
     stringstream sstr;
     string input;
-    while (running && model->isProgramRunning())
+    while (model->isProgramRunning())
     {
         getline(cin, input);
         notifyObservers(input);
@@ -100,8 +102,8 @@ void GameConsoleView::update()
     counter->increase();
 }
 
-void GameConsoleView::stop()
-{
-    qDebug() << "stop called";
-    running = false;
-}
+//void GameConsoleView::stop()
+//{
+//    qDebug() << "stop called";
+//    running = false;
+//}
