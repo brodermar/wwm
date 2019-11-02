@@ -2,8 +2,10 @@
 #define GAMEOBSERVABLE_H
 
 #include <gameobserver.h>
+
 #include <set>
 #include <iterator>
+#include <mutex>
 
 #include <QDebug>
 #include <QString>
@@ -23,7 +25,12 @@ private:
     /**
      * @brief observers a set of game observer
      */
-    std::set<GameObserver*>* observers;
+    std::set<GameObserver*> observers;
+
+    /**
+     * @brief mutex to lock and unlock data of the object
+     */
+    std::mutex mutex;
 
 public:
 
@@ -33,6 +40,8 @@ public:
     GameObservable();
 
     ~GameObservable();
+
+    GameObservable(const GameObservable& gameObservable);
 
     /**
      * @brief addObserver register a new observer, this means 

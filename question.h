@@ -6,6 +6,10 @@
 
 #include <answer.h>
 
+#include <QDebug>
+#include <QString>
+#include <QMessageLogContext>
+
 /**
  * @brief The Question class represents a question of a game.
  */

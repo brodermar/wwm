@@ -28,6 +28,7 @@ Question::Question(std::string question, std::string answerA, std::string answer
     else {
         throw std::invalid_argument("the value \"rightAnswer\" hasn't a correct value");
     }
+    qDebug() << "initialized new Question" << endl;
 }
 
 Question::~Question()
@@ -36,6 +37,7 @@ Question::~Question()
     delete answerB;
     delete answerC;
     delete answerD;
+    qDebug() << "~Question() called" << endl;
 }
 
 Question* Question::pullNewQuestion()
@@ -50,6 +52,7 @@ Question* Question::pullNewQuestion()
 
 bool Question::evaluateAnswer(std::string answer)
 {
+    qDebug() << "evaluateAnswer() called" << endl;
     return(answer == rightAnswer->getAnswer());
 }
 

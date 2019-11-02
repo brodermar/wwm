@@ -2,32 +2,43 @@
 
 GameObservable::GameObservable()
 {
-    this->observers = new std::set<GameObserver*>();
+    observers = std::set<GameObserver*>();
+    qDebug() << "initialized new GameObserver" << endl;
 }
 
 GameObservable::~GameObservable()
 {
-    delete this->observers;
+    qDebug() << "~GameObservable() called" << endl;
+}
+
+GameObservable::GameObservable(const GameObservable& gameObservable)
+{
+    observers = gameObservable.observers;
 }
 
 void GameObservable::addObserver(GameObserver* observer)
 {
-    observers->insert(observer);
+    mutex.lock();
+    observers.insert(observer);
+    mutex.unlock();
     qDebug() << "added observer";
 }
 
 void GameObservable::removeObserver(GameObserver* observer)
 {
-    observers->erase(observer);
+    mutex.lock();
+    observers.erase(observer);
+    mutex.unlock();
     qDebug() << "erased observer";
 }
 
 void GameObservable::notifyObservers()
 {
     qDebug() << "notify called";
-    std::set<GameObserver*>::iterator iterator;
-    for(iterator = observers->begin(); iterator != observers->end(); ++iterator)
+    mutex.lock();
+    for(std::set<GameObserver*>::iterator it = observers.begin(); it != observers.end(); ++it)
     {
-        (*iterator)->update();
+        (*it)->update();
     }
+    mutex.unlock();
 }

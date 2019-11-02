@@ -91,7 +91,7 @@ public:
      */
     void push(T&& item)
     {
-        qDebug() << "push() called" << endl;
+        qDebug() << "push() called"<< endl;
         mutex.lock();
         this->queue.push(item);
         mutex.unlock();

@@ -12,35 +12,55 @@ Game::Game()
     this->roundCounter = MIN_COUNT;
     this->curReward = rewards[MIN_COUNT];
     this->finished = false;
+    qDebug() << "initialized new Game" << endl;
 }
 
 Game::~Game()
 {
     delete curQuestion;
+    qDebug() << "~Game() called" << endl;
 }
 
 bool Game::isFinished()
 {
-    return finished;
+    bool value;
+    mutex.lock();
+    value = finished;
+    mutex.unlock();
+    return value;
 }
 
 int Game::getCurReward()
 {
-    return curReward;
+    int value;
+    mutex.lock();
+    value = curReward;
+    mutex.unlock();
+    return value;
 }
 
 int Game::getRoundCount()
 {
-    return roundCounter;
+    int value;
+    mutex.lock();
+    value = roundCounter;
+    mutex.unlock();
+    return value;
 }
 
 Question* Game::getCurQuestion()
 {
-    return curQuestion;
+    Question* value;
+    mutex.lock();
+    value = curQuestion;
+    mutex.unlock();
+    return value;
 }
 
 void Game::evaluateAnswer(std::string answer)
 {
+    qDebug() << "evaluate answer ..." << endl;
+    mutex.lock();
     if(finished == false && curQuestion->evaluateAnswer(answer))
     {
         roundCounter++;
@@ -71,6 +91,8 @@ void Game::evaluateAnswer(std::string answer)
             curReward = rewards[MIN_COUNT];
         }
     }
+    mutex.unlock();
+    qDebug() << "answer evaluated" << endl;
 }
 
 Game* Game::startNewGame()

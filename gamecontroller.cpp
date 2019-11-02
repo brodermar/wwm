@@ -5,11 +5,12 @@ GameController::GameController(Model* model)
     this->model = model;
     this->running = true;
     this->controlStatements = new SharedQueue<std::string>();
+    qDebug() << "initialized new GameController" << endl;
 }
 
 GameController::~GameController()
 {
-
+    qDebug() << "~GameController() called" << endl;
 }
 
 void GameController::operator()()

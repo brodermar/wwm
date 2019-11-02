@@ -3,6 +3,10 @@
 
 #include <string>
 
+#include <QDebug>
+#include <QString>
+#include <QMessageLogContext>
+
 /**
  * @brief The Answer class is part of a question.
  * @author Mark Broderius

@@ -8,11 +8,13 @@ Model::Model()
 {
     running = true;
     activeGame = nullptr;
+    qDebug() << "initialized new Model" << endl;
 }
 
 Model::~Model()
 {
     delete activeGame;
+    qDebug() << "~Model() called" << endl;
 }
 
 Game* Model::getCurrentGame()
@@ -26,6 +28,7 @@ Game* Model::getCurrentGame()
 
 void Model::quitGame()
 {
+    qDebug() << "quitGame() called" << endl;
     mutex.lock();
     delete activeGame;
     activeGame = nullptr;
@@ -34,6 +37,7 @@ void Model::quitGame()
 
 void Model::startNewGame()
 {
+    qDebug() << "startNewGame() called" << endl;
     mutex.lock();
     delete activeGame;
     activeGame = Game::startNewGame();
@@ -42,15 +46,16 @@ void Model::startNewGame()
 
 bool Model::isProgramRunning()
 {
-    bool isRunning = false;
+    bool value;
     mutex.lock();
-    isRunning = running;
+    value = running;
     mutex.unlock();
-    return isRunning;
+    return value;
 }
 
 void Model::terminateProgram()
 {
+    qDebug() << "terminateProgram() called" << endl;
     mutex.lock();
     running = false;
     mutex.unlock();

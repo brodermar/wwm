@@ -6,6 +6,7 @@
 #include <string>
 #include <set>
 #include <iterator>
+#include <mutex>
 
 #include <QDebug>
 #include <QMessageLogContext>
@@ -23,7 +24,12 @@ private:
     /**
      * @brief observers a set of view observers
      */
-    std::set<ViewObserver*>* observers;
+    std::set<ViewObserver*> observers;
+
+    /**
+     * @brief mutex to lock and unlock data of the object
+     */
+    std::mutex mutex;
 
 public:
 
@@ -33,6 +39,11 @@ public:
     ViewObservable();
 
     ~ViewObservable();
+
+    /**
+     * @brief ViewObservable copies a view observable
+     */
+    ViewObservable(const ViewObservable &viewObservable);
 
     /**
      * @brief addObserver register a new observer, this means 

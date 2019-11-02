@@ -6,11 +6,13 @@ GameConsoleView::GameConsoleView(Model* model) : ViewObservable(), GameObserver(
     this->model = model;
     this->running = true;
     this->counter = new SharedCounter();
+    qDebug() << "initialized new GameConsoleView" << endl;
 }
 
 GameConsoleView::~GameConsoleView()
 {
     delete counter;
+    qDebug() << "~GameConsoleView() called" << endl;
 }
 
 void GameConsoleView::operator()()
@@ -54,7 +56,7 @@ void GameConsoleView::paint(Model* model)
     stringstream sstr;
     if(model->isProgramRunning())
     {
-        sstr << "program status: running" << endl;
+        sstr << endl << "program status: running" << endl;
         Game* currentGame = model->getCurrentGame();
         if(currentGame == nullptr)
         {
@@ -89,7 +91,7 @@ void GameConsoleView::paint(Model* model)
     sstr << "start new game: " << model->START_GAME_EXP << endl;
     sstr << "quit game: " << model->QUIT_GAME_EXP << endl;
     sstr << "... or type an answer" << endl;
-    cout << sstr.str();
+    cout << sstr.str() << endl;
 }
 
 void GameConsoleView::update()

@@ -2,7 +2,13 @@
 #define GAME_H
 
 #include <question.h>
+
 #include <string>
+#include <mutex>
+
+#include <QDebug>
+#include <QString>
+#include <QMessageLogContext>
 
 /**
  * @brief The Game class is part of the model and presesents one game.
@@ -66,6 +72,11 @@ private:
      */
     bool finished;
 
+    /**
+     * @brief mutex to lock and unlock data of the object
+     */
+    std::mutex mutex;
+
 public:
 
     /**
@@ -74,6 +85,8 @@ public:
     Game();
 
     ~Game();
+
+
 
     /**
      * @brief isFinished returns wether the game is finished or not

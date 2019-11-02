@@ -22,7 +22,7 @@
  * even before the actual qt application. At the same time it is not necessary at all to run a
  * qt application. The message handler still works without.
  *
- * You access the handler automatically by using the qt logging methods linke qDebug().
+ * You access the handler automatically by using the qt logging methods like qDebug().
  *
  * @param type a QtMsgType
  * @param context the qt message log context; include <QMessageLogContext> header in the classes

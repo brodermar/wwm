@@ -2,32 +2,43 @@
 
 ViewObservable::ViewObservable()
 {
-    this->observers = new std::set<ViewObserver*>();
+    observers = std::set<ViewObserver*>();
+    qDebug() << "initialized new ViewObservable" << endl;
 }
 
 ViewObservable::~ViewObservable()
 {
-    delete this->observers;
+    qDebug() << "~ViewObservable() called" << endl;
+}
+
+ViewObservable::ViewObservable(const ViewObservable& viewObservable)
+{
+    observers = viewObservable.observers;
 }
 
 void ViewObservable::addObserver(ViewObserver* observer)
 {
-    observers->insert(observer);
+    mutex.lock();
+    observers.insert(observer);
+    mutex.unlock();
     qDebug() << "added observer" << endl;
 }
 
 void ViewObservable::removeObserver(ViewObserver* observer)
 {
-    observers->erase(observer);
+    mutex.lock();
+    observers.erase(observer);
+    mutex.unlock();
     qDebug() << "erased observer" << endl;
 }
 
 void ViewObservable::notifyObservers(std::string message)
 {
     qDebug() << "notify called with message: " << QString::fromStdString(message);
-    std::set<ViewObserver*>::iterator iterator;
-    for(iterator = observers->begin(); iterator != observers->end(); ++iterator)
+    mutex.lock();
+    for(std::set<ViewObserver*>::iterator it = observers.begin(); it != observers.end(); ++it)
     {
-        (*iterator)->update(message);
+        (*it)->update(message);
     }
+    mutex.unlock();
 }
