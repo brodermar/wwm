@@ -65,36 +65,38 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &context, con
  */
 int main(int argc, char** argv)
 {
-    qDebug() << "started program" << endl;
-
     qInstallMessageHandler(customMessageHandler);
     qDebug() << "installed message handler" << endl;
 
+    qDebug() << "initialize q application ..." << endl;
     QApplication app(argc, argv);
-    qDebug() << "initialized q application" << endl;
 
+    qDebug() << "initialize game model ..." << endl;
     Model* model = new Model();
-    qDebug() << "intialized game model" << endl;
+    qDebug() << "initialize controller ..." << endl;
     GameController* controller = new GameController(model);
-    qDebug() << "initialized controller" << endl;
 
+    qDebug() << "initialize game view ..." << endl;
     //    GameConsoleView* view = new GameConsoleView(model);
     MainWindow mainWindow(model);
     mainWindow.show();
-    qDebug() << "initialized game view" << endl;
 
+    qDebug() << "set up component configurations ..." << endl;
     mainWindow.addObserver(controller);
     model->addObserver(&mainWindow);
+    mainWindow.show();
 
+    qDebug() << "start controller ..." << endl;
     std::thread thread_controller(*controller);
 //    std::thread thread_view(*view);
 
     int appStatus = app.exec();
-    qDebug() << "joined view" << endl;
+    qDebug() << "joined game view" << endl;
 
-    controller->update("exit");
+    qDebug() << "call update(" << QString::fromStdString(model->EXIT_EXP) << ") on controller ..." << endl;
+    controller->update(model->EXIT_EXP);
     thread_controller.join();
-    qDebug() << "joined controller" << endl;
+    qDebug() << "joined game controller" << endl;
 
 //    thread_view.join();
 //    qDebug() << "joined view" << endl;

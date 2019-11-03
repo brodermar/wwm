@@ -7,6 +7,7 @@
 #include <model.h>
 
 #include <QMainWindow>
+#include <QDesktopWidget>
 #include <QDebug>
 #include <QString>
 #include <QMessageLogContext>
@@ -21,7 +22,7 @@ class MainWindow : public QMainWindow, public ViewObservable, public GameObserve
 
 public:
     MainWindow(QWidget* parent, Model* model);
-    MainWindow(Model* model);
+    MainWindow(Model* model) : MainWindow(0, model) {}
     ~MainWindow() override;
     void update() override;
 
