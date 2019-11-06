@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ButtonAnswerB->setLetter("B");
     ui->ButtonAnswerC->setLetter("C");
     ui->ButtonAnswerD->setLetter("D");
-    ui->ButtonMenu->setText("Starte Spiel!");
     ui->ButtonMenu->setInteractiv(false);
     ui->ButtonMenu->setGold();
 }
@@ -44,21 +43,6 @@ void MainWindow::CommandParser(string command)
     else if(command == "ShowRightAnswerb")
     {
         ShowRightAnswer(to_string(command[command.length()-1]));
-    }
-
-}
-
-void MainWindow::TellController(string content)
-{
-    //antwort
-    if(content.length() == 1)
-    {
-
-    }
-    //geh nach hause
-    else
-    {
-
     }
 }
 
@@ -94,28 +78,37 @@ void MainWindow::SetSum(string sum)
 
 void MainWindow::SetUpRound(string a, string b, string c, string d, string question, string sum)
 {
-    SetAnswerA(a);
+    ui->ButtonMenu->setVisible(false);
+    ui->ButtonAnswerA->setVisible(true);
+    ui->ButtonAnswerB->setVisible(true);
+    ui->ButtonAnswerC->setVisible(true);
+    ui->ButtonAnswerD->setVisible(true);
+    ui->ButtonSum->setVisible(true);
+
     ui->ButtonAnswerA->setTrigger();
-    SetAnswerB(b);
     ui->ButtonAnswerB->setTrigger();
-    SetAnswerC(c);
     ui->ButtonAnswerC->setTrigger();
-    SetAnswerD(d);
     ui->ButtonAnswerD->setTrigger();
+    SetAnswerA(a);
+    SetAnswerB(b);
+    SetAnswerC(c);
+    SetAnswerD(d);
     SetQuestion(question);
     SetSum(sum);
 }
 
 void MainWindow::ShowMenuScreen(string text)
 {
+   ui->ButtonSum->setVisible(false);
    ui->ButtonAnswerA->setVisible(false);
    ui->ButtonAnswerB->setVisible(false);
    ui->ButtonAnswerC->setVisible(false);
    ui->ButtonAnswerD->setVisible(false);
    ui->ButtonQuestion->setVisible(false);
-   ui->ButtonSum->setVisible(false);
+
    ui->ButtonMenu->setVisible(true);
    ui->ButtonMenu->setText(text);
+   ui->ButtonMenu->setInteractiv(true);
 
 }
 
@@ -126,12 +119,17 @@ void MainWindow::ShowQuestionScreen()
     ui->ButtonAnswerC->setVisible(true);
     ui->ButtonAnswerD->setVisible(true);
     ui->ButtonQuestion->setVisible(true);
-    ui->ButtonSum->setVisible(false);
+    ui->ButtonSum->setVisible(true);
     ui->ButtonMenu->setVisible(false);
 }
 
 void MainWindow::ShowRightAnswer(string answer)
 {
+    ui->ButtonAnswerA->setInteractiv(false);
+    ui->ButtonAnswerB->setInteractiv(false);
+    ui->ButtonAnswerC->setInteractiv(false);
+    ui->ButtonAnswerD->setInteractiv(false);
+    delay(2000);
     if(answer == "a")
     {
         ui->ButtonAnswerA->goGreen();

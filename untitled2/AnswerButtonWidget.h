@@ -23,7 +23,9 @@ public:
     void goGreen();
     void setGold();
     void TriggerPaintEvent();
-    std::string IsSelected();
+    bool IsSelected();
+    void setVisible(bool setter);
+
 protected:
     void paintEvent(QPaintEvent *event);
 
@@ -51,6 +53,8 @@ private:
     QPixmap ButtonRightGold;
     QPixmap ButtonCenterGold;
 
+    QPixmap HiddenButton;
+
     QPixmap ButtonLeftPrint;
     QPixmap ButtonRightPrint;
     QPixmap ButtonCenterPrint;
@@ -67,6 +71,8 @@ private:
     bool gold;
 
     bool pressed;
+
+    bool visible;
 
 signals:
 

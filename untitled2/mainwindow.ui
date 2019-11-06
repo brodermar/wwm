@@ -22,7 +22,7 @@
   <property name="styleSheet">
    <string notr="true">#DeinWidgetObjectName
 {
-	background-image: url(:\Qt\Resouces\logo.png);
+	background-image: url(C:\Qt\Resouces\logo.png);
 }</string>
   </property>
   <widget class="QWidget" name="WidgetLayout">

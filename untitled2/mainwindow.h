@@ -5,6 +5,7 @@
 #include <QTime>
 #include <string>
 #include <question.h>
+#include <QEvent>
 
 using namespace std;
 
@@ -23,11 +24,10 @@ public:
 
     void CommandParser(string command);
     void TellController(string content);
-
 private:
     string selcetedAnswer;
     string trueAnswer;
-
+    void AnswerSelected();
     void SetAnswerA(string answer);
     void SetAnswerB(string answer);
     void SetAnswerC(string answer);
@@ -44,7 +44,6 @@ private:
     void ShowMenuScreen(string text);
     void ShowQuestionScreen();
 
-    void defuseButtons();
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
