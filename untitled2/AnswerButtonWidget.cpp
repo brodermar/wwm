@@ -18,14 +18,16 @@ AnswerButtonWidget::AnswerButtonWidget(QWidget *parent) : QPushButton(parent)
     ButtonRightGold = QPixmap(":/Pics/Resouces/DialogRightWin.png");
     ButtonCenterGold = QPixmap(":/Pics/Resouces/DialogCenterWin.png");
 
+    ButtonHidden = QPixmap(":/Pics/Resouces/HiddenButton.png");
+
     MainRectangel = new QRectF(0.0, 0.0, 0.0, 0.0);
 
     ButtonLeftPrint = ButtonLeftDefault;
     ButtonRightPrint = ButtonRightDefault;
     ButtonCenterPrint = ButtonCenterDefault;
+    visible = true;
 
     interactive = true;
-
     orange = false;
     blue = true;
     green = false;
@@ -37,20 +39,52 @@ void AnswerButtonWidget::setInteractiv(bool setter)
     interactive = setter;
 }
 
- void AnswerButtonWidget::setGold()
+ void AnswerButtonWidget::ButtonGold(bool setter)
  {
-     green = false;
-     pressed = false;
-     gold = true;
-     orange = false;
-     blue = false;
-     interactive = true;
+     if(setter)
+     {
+        green = false;
+        gold = true;
+        orange = false;
+        blue = false;
+        interactive = true;
+     }
+     else
+     {
+        this->ButtonDefault(true);
+     }
  }
 
+ void AnswerButtonWidget::ButtonStatic(bool setter)
+ {
+     if(setter)
+     {
+         green = false;
+         gold = false;
+         orange = false;
+         blue = true;
+         interactive = false;
+     }
+     else
+     {
+         this->ButtonDefault(true);
+     }
+ }
+
+ void AnswerButtonWidget::ButtonDefault(bool setter)
+ {
+     if(setter)
+     {
+         green = false;
+         gold = false;
+         orange = false;
+         blue = true;
+         interactive = true;
+     }
+ }
 void AnswerButtonWidget::setTrigger()
 {
     green = false;
-    pressed = false;
     gold = false;
     orange = false;
     blue = true;
@@ -74,35 +108,60 @@ void AnswerButtonWidget::setText(std::string Answer)
     TriggerPaintEvent();
 }
 
+void AnswerButtonWidget::ResourceSelector()
+{
+    if(visible)
+        {
+            if(orange)
+            {
+                std::cout << "Orange" << std::endl;
+                ButtonLeftPrint = ButtonLeftSelceted;
+                ButtonRightPrint = ButtonRightSelceted;
+                ButtonCenterPrint = ButtonCenterSelceted;
+            }
+
+            else if(green)
+            {
+                std::cout << "green" << std::endl;
+                ButtonLeftPrint = ButtonLeftTrue;
+                ButtonRightPrint = ButtonRightTrue;
+                ButtonCenterPrint = ButtonCenterTrue;
+            }
+            else if(gold)
+            {
+                std::cout << "gold" << std::endl;
+                ButtonLeftPrint = ButtonLeftGold;
+                ButtonRightPrint = ButtonRightGold;
+                ButtonCenterPrint = ButtonCenterGold;
+            }
+            else if(orange)
+            {
+                std::cout << "Orange2" << std::endl;
+                ButtonLeftPrint = ButtonLeftSelceted;
+                ButtonRightPrint = ButtonRightSelceted;
+                ButtonCenterPrint = ButtonCenterSelceted;
+            }
+            else if(blue && !gold && visible)
+            {
+                std::cout << "blue" << std::endl;
+                 ButtonLeftPrint = ButtonLeftDefault;
+                 ButtonRightPrint = ButtonRightDefault;
+                 ButtonCenterPrint = ButtonCenterDefault;
+            }
+        }
+        else
+        {
+        std::cout << "Hidden" << std::endl;
+            ButtonLeftPrint = ButtonHidden;
+            ButtonRightPrint = ButtonHidden;
+            ButtonCenterPrint = ButtonHidden;
+        }
+}
+
+
 void AnswerButtonWidget::paintEvent(QPaintEvent *)
 {
-    if(green)
-    {
-        ButtonLeftPrint = ButtonLeftTrue;
-        ButtonRightPrint = ButtonRightTrue;
-        ButtonCenterPrint = ButtonCenterTrue;
-    }
-    else if(gold)
-    {
-        ButtonLeftPrint = ButtonLeftGold;
-        ButtonRightPrint = ButtonRightGold;
-        ButtonCenterPrint = ButtonCenterGold;
-    }
-    if(interactive)
-    {
-        if(orange)
-        {
-            ButtonLeftPrint = ButtonLeftSelceted;
-            ButtonRightPrint = ButtonRightSelceted;
-            ButtonCenterPrint = ButtonCenterSelceted;
-        }
-        else if(blue && !gold)
-        {
-            ButtonLeftPrint = ButtonLeftDefault;
-            ButtonRightPrint = ButtonRightDefault;
-            ButtonCenterPrint = ButtonCenterDefault;
-        }
-    }
+    std::cout << "I am the Paint Event of: " << this->objectName().toStdString() << std::endl;
 
     //the painter wich paints all graphic element of AnswerButtonWidget
     QPainter * Painter = new QPainter(this);
@@ -136,17 +195,15 @@ void AnswerButtonWidget::goGreen()
     TriggerPaintEvent();
 }
 
-std::string AnswerButtonWidget::IsSelected()
+void AnswerButtonWidget::setVisible2(bool setter)
 {
-    if(pressed)
+    visible = setter;
+    if(!setter)
     {
-        return Letter;
+        interactive = false;
+        Text = "";
     }
-    else
-    {
-        return "n";
-    }
-
+    TriggerPaintEvent();
 }
 
 void AnswerButtonWidget::mousePressEvent(QMouseEvent *)
@@ -185,5 +242,7 @@ void AnswerButtonWidget::leaveEvent(QEvent *)
 
 void AnswerButtonWidget::TriggerPaintEvent()
 {
+    std::cout << "TriggerPaintEvent " << this->objectName().toStdString() << std::endl;
+    ResourceSelector();
     this->repaint();
 }

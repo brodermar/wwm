@@ -13,10 +13,8 @@ int main(int argc, char *argv[])
     QApplication::setFont(f);
     w.show();
     w.CommandParser("ShowQuestionScreen");
-    w.delay(5000);
-    w.CommandParser("ShowRightAnswerb");
-    w.delay(5000);
-    w.CommandParser("StartNewRound");
+    w.delay(2000);
+    w.CommandParser("MenuScreen");
 
     return a.exec();
 }

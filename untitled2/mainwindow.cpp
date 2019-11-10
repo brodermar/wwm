@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ButtonAnswerD->setLetter("D");
     ui->ButtonMenu->setText("Starte Spiel!");
     ui->ButtonMenu->setInteractiv(false);
-    ui->ButtonMenu->setGold();
+    ui->ButtonMenu->ButtonGold(true);
 }
 
 MainWindow::~MainWindow()
@@ -28,7 +28,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::CommandParser(string command)
 {
-    if(command == "StartNewRound")
+    if(command == "MenuScreen")
     {
         ShowMenuScreen("Wer wird Millionär");
     }
@@ -36,10 +36,6 @@ void MainWindow::CommandParser(string command)
     {
         SetUpRound(command, command, command, command, command, command);
         ShowQuestionScreen();
-    }
-    else if(command == "NewQuestionSet")
-    {
-        SetUpRound(command, command, command, command, command, command);
     }
     else if(command == "ShowRightAnswerb")
     {
@@ -108,26 +104,28 @@ void MainWindow::SetUpRound(string a, string b, string c, string d, string quest
 
 void MainWindow::ShowMenuScreen(string text)
 {
-   ui->ButtonAnswerA->setVisible(false);
-   ui->ButtonAnswerB->setVisible(false);
-   ui->ButtonAnswerC->setVisible(false);
-   ui->ButtonAnswerD->setVisible(false);
-   ui->ButtonQuestion->setVisible(false);
-   ui->ButtonSum->setVisible(false);
-   ui->ButtonMenu->setVisible(true);
+   ui->ButtonAnswerA->setVisible2(false);
+   ui->ButtonAnswerB->setVisible2(false);
+   ui->ButtonAnswerC->setVisible2(false);
+   ui->ButtonAnswerD->setVisible2(false);
+   ui->ButtonQuestion->setVisible2(false);
+   ui->ButtonSum->setVisible2(false);
+   ui->ButtonMenu->setVisible2(true);
+   ui->ButtonMenu->setInteractiv(true);
    ui->ButtonMenu->setText(text);
 
 }
 
 void MainWindow::ShowQuestionScreen()
 {
-    ui->ButtonAnswerA->setVisible(true);
-    ui->ButtonAnswerB->setVisible(true);
-    ui->ButtonAnswerC->setVisible(true);
-    ui->ButtonAnswerD->setVisible(true);
-    ui->ButtonQuestion->setVisible(true);
-    ui->ButtonSum->setVisible(false);
-    ui->ButtonMenu->setVisible(false);
+    ui->ButtonAnswerA->setVisible2(true);
+    ui->ButtonAnswerB->setVisible2(true);
+    ui->ButtonAnswerC->setVisible2(true);
+    ui->ButtonAnswerD->setVisible2(true);
+    ui->ButtonQuestion->setVisible2(true);
+    ui->ButtonSum->setVisible2(true);
+
+    ui->ButtonMenu->setVisible2(false);
 }
 
 void MainWindow::ShowRightAnswer(string answer)

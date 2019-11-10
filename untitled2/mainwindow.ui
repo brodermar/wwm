@@ -20,9 +20,10 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#DeinWidgetObjectName
+   <string notr="true">#MainWindow
 {
-	background-image: url(:\Qt\Resouces\logo.png);
+
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0.193182 rgba(0, 0, 0, 255), stop:1 rgba(88, 28, 86, 173));
 }</string>
   </property>
   <widget class="QWidget" name="WidgetLayout">
@@ -116,13 +117,41 @@ background-color: none; color: white;
       </item>
       <item>
        <widget class="AnswerButtonWidget" name="ButtonMenu" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">ButtonMenu</string>
+         <string notr="true">#ButtonMenu{
+background-color: none; color: white;
+}</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">#ButtonMenu{
 background-color: none; color: white;
