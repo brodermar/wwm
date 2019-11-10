@@ -9,9 +9,10 @@
 #include <QString>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QPushButton>
 #pragma once
 
-class AnswerButtonWidget : public QWidget
+class AnswerButtonWidget : public QPushButton
 {
     Q_OBJECT
 public:

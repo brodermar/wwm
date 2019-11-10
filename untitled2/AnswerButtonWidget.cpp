@@ -1,22 +1,22 @@
 #include "AnswerButtonWidget.h"
 
-AnswerButtonWidget::AnswerButtonWidget(QWidget *parent) : QWidget(parent)
+AnswerButtonWidget::AnswerButtonWidget(QWidget *parent) : QPushButton(parent)
 {
-    ButtonLeftDefault = QPixmap("Resouces/DialogDefaultLeft.png");
-    ButtonRightDefault = QPixmap("Resouces/DialogDefaultRight.png");
-    ButtonCenterDefault = QPixmap("Resouces/DialogDefaultCenter.png");
+    ButtonLeftDefault = QPixmap(":/Pics/Resouces/DialogDefaultLeft.png");
+    ButtonRightDefault = QPixmap(":/Pics/Resouces/DialogDefaultRight.png");
+    ButtonCenterDefault = QPixmap(":/Pics/Resouces/DialogDefaultCenter.png");
 
-    ButtonLeftSelceted = QPixmap("Resouces/DialogLeftPush.png");
-    ButtonRightSelceted = QPixmap("Resouces/DialogRightPush.png");
-    ButtonCenterSelceted = QPixmap("Resouces/DialogCenterPush.png");
+    ButtonLeftSelceted = QPixmap(":/Pics/Resouces/DialogLeftPush.png");
+    ButtonRightSelceted = QPixmap(":/Pics/Resouces/DialogRightPush.png");
+    ButtonCenterSelceted = QPixmap(":/Pics/Resouces/DialogCenterPush.png");
 
-    ButtonLeftTrue = QPixmap("Resouces/DialogTrueLeft.png");
-    ButtonRightTrue = QPixmap("Resouces/DialogTrueRight.png");
-    ButtonCenterTrue = QPixmap("Resouces/DialogCenterTrue.png");
+    ButtonLeftTrue = QPixmap(":/Pics/Resouces/DialogTrueLeft.png");
+    ButtonRightTrue = QPixmap(":/Pics/Resouces/DialogTrueRight.png");
+    ButtonCenterTrue = QPixmap(":/Pics/Resouces/DialogCenterTrue.png");
 
-    ButtonLeftGold = QPixmap("Resouces/DialogLeftWin.png");
-    ButtonRightGold = QPixmap("Resouces/DialogRightWin.png");
-    ButtonCenterGold = QPixmap("Resouces/DialogCenterWin.png");
+    ButtonLeftGold = QPixmap(":/Pics/Resouces/DialogLeftWin.png");
+    ButtonRightGold = QPixmap(":/Pics/Resouces/DialogRightWin.png");
+    ButtonCenterGold = QPixmap(":/Pics/Resouces/DialogCenterWin.png");
 
     MainRectangel = new QRectF(0.0, 0.0, 0.0, 0.0);
 

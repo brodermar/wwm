@@ -166,3 +166,7 @@ void MainWindow::delay(int ms)
         }
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+
+}

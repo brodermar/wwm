@@ -24,6 +24,9 @@ public:
     void CommandParser(string command);
     void TellController(string content);
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     string selcetedAnswer;
     string trueAnswer;
