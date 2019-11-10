@@ -215,6 +215,7 @@ void AnswerButtonWidget::mousePressEvent(QMouseEvent *)
         green = false;
         gold = false;
         TriggerPaintEvent();
+        emit clicked();
         interactive = false;
     }
 }
