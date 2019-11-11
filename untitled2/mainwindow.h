@@ -1,11 +1,20 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <viewobservable.h>
+#include <gameobserver.h>
+#include <sharedcounter.h>
+#include <model.h>
+
 #include <QMainWindow>
+#include <QDesktopWidget>
+#include <QDebug>
+#include <QString>
+#include <QMessageLogContext>
 #include <QTime>
 #include <string>
 #include <question.h>
-#include <QEvent>
+
 
 using namespace std;
 
@@ -13,21 +22,30 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public ViewObservable, public GameObserver
 {
     Q_OBJECT
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-    void delay(int ms);
+    MainWindow(QWidget* parent, Model* model);
+    MainWindow(Model* model) : MainWindow(0, model) {}
+    ~MainWindow() override;
+    void update() override;
 
 
     void CommandParser(string command);
     void TellController(string content);
+
+private slots:
+    void buttonClickedA();
+    void buttonClickedB();
+    void buttonClickedC();
+    void buttonClickedD();
+    void buttonClickedMenu();
+
 private:
     string selcetedAnswer;
     string trueAnswer;
-    void AnswerSelected();
+
     void SetAnswerA(string answer);
     void SetAnswerB(string answer);
     void SetAnswerC(string answer);
@@ -36,14 +54,19 @@ private:
 
     void SetSum(string sum);
 
-
-
     void SetUpRound(string a, string b, string c, string d, string question, string sum);
     void ShowRightAnswer(string answer);
 
     void ShowMenuScreen(string text);
     void ShowQuestionScreen();
 
-    Ui::MainWindow *ui;
+    void defuseButtons();
+    void GetButtonGreen(string answer, bool green);
+
+    void delay(int ms);
+
+    Ui::MainWindow* ui;
+    Model* model;
+    SharedCounter counter;
 };
 #endif // MAINWINDOW_H

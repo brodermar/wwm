@@ -9,23 +9,27 @@
 #include <QString>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QPushButton>
+#include <iostream>
 #pragma once
 
-class AnswerButtonWidget : public QWidget
+class AnswerButtonWidget : public QPushButton
 {
     Q_OBJECT
 public:
     explicit AnswerButtonWidget(QWidget *parent = nullptr);
+    void ButtonGold(bool setter);
+    void ButtonStatic(bool setter);
+    void ButtonDefault(bool setter);
+    void setVisible2(bool setter);
     void setLetter(std::string Letter);
     void setText(std::string Answer);
+    void ResourceSelector();
     void setInteractiv(bool setter);
     void setTrigger();
     void goGreen();
-    void setGold();
     void TriggerPaintEvent();
-    bool IsSelected();
-    void setVisible(bool setter);
-
+    std::string IsSelected();
 protected:
     void paintEvent(QPaintEvent *event);
 
@@ -53,11 +57,11 @@ private:
     QPixmap ButtonRightGold;
     QPixmap ButtonCenterGold;
 
-    QPixmap HiddenButton;
-
     QPixmap ButtonLeftPrint;
     QPixmap ButtonRightPrint;
     QPixmap ButtonCenterPrint;
+
+    QPixmap ButtonHidden;
 
     QRectF * MainRectangel;
     QRectF * TargetCenter;
@@ -69,8 +73,6 @@ private:
     bool orange;
     bool green;
     bool gold;
-
-    bool pressed;
 
     bool visible;
 
