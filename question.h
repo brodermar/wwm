@@ -10,6 +10,13 @@
 #include <QString>
 #include <QMessageLogContext>
 
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
 /**
  * @brief The Question class represents a question of a game.
  */
