@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/Pics">
+        <file>Resouces/DialogCenterPush.png</file>
+        <file>Resouces/DialogCenterTrue.png</file>
+        <file>Resouces/DialogCenterWin.png</file>
+        <file>Resouces/DialogDefaultCenter.png</file>
+        <file>Resouces/DialogDefaultLeft.png</file>
+        <file>Resouces/DialogDefaultRight.png</file>
+        <file>Resouces/DialogLeftPush.png</file>
+        <file>Resouces/DialogLeftPush.smooth.png</file>
+        <file>Resouces/DialogLeftWin.png</file>
+        <file>Resouces/DialogRightPush.png</file>
+        <file>Resouces/DialogRightWin.png</file>
+        <file>Resouces/DialogTrueLeft.png</file>
+        <file>Resouces/DialogTrueRight.png</file>
+        <file>Resouces/HiddenButton.png</file>
+        <file>Resouces/home.png</file>
+        <file>Resouces/logo.png</file>
+    </qresource>
+</RCC>
