@@ -3,6 +3,12 @@
 
 #include <string>
 #include <stdexcept>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
 #include <answer.h>
 

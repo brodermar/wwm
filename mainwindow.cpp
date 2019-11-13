@@ -245,6 +245,7 @@ void MainWindow::delay(int ms)
     }
 }
 
+
 void MainWindow::update()
 {
     qDebug() << "update() called" << endl;

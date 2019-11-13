@@ -75,7 +75,7 @@ int main(int argc, char** argv)
     Model* model = new Model();
     qDebug() << "initialize controller ..." << endl;
     GameController* controller = new GameController(model);
-
+  
     qDebug() << "initialize game gui view ..." << endl;
     MainWindow mainWindow(model);
 

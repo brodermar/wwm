@@ -41,13 +41,51 @@ Question::~Question()
 }
 
 Question* Question::pullNewQuestion()
-{
-    std::string question = "Wer ist der Bürgermeister von Wesel?";
-    std::string answerA = "Die Henne";
-    std::string answerB = "Der Hahn";
-    std::string answerC = "Der Esel";
-    std::string answerD = "Der Fuchs";
-    return new Question(question, answerA, answerB, answerC, answerD, 'c');
+{  
+    srand (time(NULL));
+    std::ifstream csvread;
+    csvread.open(":/resources/Fragenkatalog.csv", std::ios::in);
+    if(csvread){
+        std::string s="";
+        //höchste id +1
+        int id_numb = 17;
+        //length = 7*id_numb +1
+        const int length = 120;
+        std::string question[length];
+        int i=0;
+        while(getline(csvread, s, ';'))
+        {
+            question[i]=s;
+            i++;
+        }
+        csvread.close();
+        int a=0;
+        int tempx = 0;
+        int rand_question = rand() % id_numb+1;
+        for (;a<length;a++) {
+            std::string s = question[a];
+            std::stringstream geek(s);
+            int temp = 0;
+            geek >> temp;
+            if(temp == rand_question) {
+                tempx = a;
+                break;
+            }
+        }
+        std::string x = question[tempx+6];
+        char check[2];
+        strcpy(check, x.c_str());
+
+        std::string newQuestion = question[tempx+1];
+        std::string answerA = question[tempx+2];
+        std::string answerB = question[tempx+3];
+        std::string answerC = question[tempx+4];
+        std::string answerD = question[tempx+5];
+        return new Question(newQuestion, answerA, answerB, answerC, answerD, check[0]);
+    }
+    else{
+        qDebug() << "Fehler beim lesen" << endl;
+    }
 }
 
 bool Question::evaluateAnswer(std::string answer)

@@ -34,7 +34,6 @@ class MainWindow :
 
 public:
     MainWindow(QWidget* parent, Model* model);
-    MainWindow(Model* model) : MainWindow(0, model) {}
     ~MainWindow() override;
     void update() override;
     void CommandParser(string command);
@@ -53,7 +52,6 @@ private:
     SharedCounter counter;
     string selcetedAnswer;
     string trueAnswer;
-
     void SetAnswerA(string answer);
     void SetAnswerB(string answer);
     void SetAnswerC(string answer);

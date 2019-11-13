@@ -16,5 +16,9 @@
         <file>Resouces/HiddenButton.png</file>
         <file>Resouces/home.png</file>
         <file>Resouces/logo.png</file>
+    <qresource prefix="/">
+        <file>resources/background.jpg</file>
+        <file>resources/logo.png</file>
+        <file>resources/Fragenkatalog.csv</file>
     </qresource>
 </RCC>
