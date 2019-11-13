@@ -41,10 +41,16 @@ Question::~Question()
 }
 
 Question* Question::pullNewQuestion()
-{  
+{
+//    std::string question = "Wer ist der Bürgermeister von Wesel?";
+//    std::string answerA = "Die Henne";
+//    std::string answerB = "Der Hahn";
+//    std::string answerC = "Der Esel";
+//    std::string answerD = "Der Fuchs";
+//    return new Question(question, answerA, answerB, answerC, answerD, 'c');
     srand (time(NULL));
     std::ifstream csvread;
-    csvread.open(":/resources/Fragenkatalog.csv", std::ios::in);
+    csvread.open(":resources/Fragenkatalog.csv", std::ios::in);
     if(csvread){
         std::string s="";
         //höchste id +1
