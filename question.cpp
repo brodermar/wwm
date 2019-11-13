@@ -47,7 +47,7 @@ Question* Question::pullNewQuestion()
     csvread.open(":/resources/Fragenkatalog.csv", std::ios::in);
     if(csvread){
         std::string s="";
-        //höchste id +1
+        //hÃ¶chste id +1
         int id_numb = 17;
         //length = 7*id_numb +1
         const int length = 120;

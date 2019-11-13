@@ -3,19 +3,18 @@
 
 #include <string>
 #include <stdexcept>
-
-#include <answer.h>
-
-#include <QDebug>
-#include <QString>
-#include <QMessageLogContext>
-
 #include <iostream>
 #include <sstream>
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
+#include <answer.h>
+
+#include <QDebug>
+#include <QString>
+#include <QMessageLogContext>
 
 /**
  * @brief The Question class represents a question of a game.

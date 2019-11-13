@@ -28,6 +28,7 @@ DEFINES += QT_MESSAGELOGCONTEXT
 
 # The source files for the project.
 SOURCES += \
+    answerbuttonwidget.cpp \
     game.cpp \
     gameconsoleview.cpp \
     gamecontroller.cpp \
@@ -38,10 +39,12 @@ SOURCES += \
     viewobservable.cpp \
     gameobservable.cpp \
     answer.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    updateevent.cpp
 
 # The associated header file of the project.
 HEADERS += \
+    answerbuttonwidget.h \
     game.h \
     gameconsoleview.h \
     gamecontroller.h \
@@ -54,7 +57,8 @@ HEADERS += \
     gameobserver.h \
     gameobservable.h \
     answer.h \
-    mainwindow.h
+    mainwindow.h \
+    updateevent.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
