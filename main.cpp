@@ -76,30 +76,35 @@ int main(int argc, char** argv)
     qDebug() << "initialize controller ..." << endl;
     GameController* controller = new GameController(model);
 
-    qDebug() << "initialize game view ..." << endl;
-    //    GameConsoleView* view = new GameConsoleView(model);
+    qDebug() << "initialize game gui view ..." << endl;
     MainWindow mainWindow(model);
+
+    qDebug() << "initialize game console view" << endl;
+    GameConsoleView* view = new GameConsoleView(model);
 
     qDebug() << "set up component configurations ..." << endl;
     mainWindow.addObserver(controller);
+    view->addObserver(controller);
     model->addObserver(&mainWindow);
+    model->addObserver(view);
     mainWindow.show();
     mainWindow.CommandParser("ShowMenuScreen");
 
     qDebug() << "start controller ..." << endl;
     std::thread thread_controller(*controller);
-//    std::thread thread_view(*view);
+    qDebug() << "start game console view ..." << endl;
+    std::thread thread_view(*view);
 
     int appStatus = app.exec();
-    qDebug() << "joined game view" << endl;
+    qDebug() << "joined game gui view" << endl;
 
     qDebug() << "call update(" << QString::fromStdString(model->EXIT_EXP) << ") on controller ..." << endl;
     controller->update(model->EXIT_EXP);
+
     thread_controller.join();
     qDebug() << "joined game controller" << endl;
-
-//    thread_view.join();
-//    qDebug() << "joined view" << endl;
+    thread_view.join();
+    qDebug() << "joined view" << endl;
 
     qDebug() << "program terminated" << endl;
     return appStatus;

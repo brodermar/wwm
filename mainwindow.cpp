@@ -232,7 +232,7 @@ void MainWindow::buttonClickedD()
 void MainWindow::buttonClickedMenu()
 {
     qDebug() << "buttonClickedMenu() called" << endl;
-    notifyObservers("START_GAME_EXP");
+    notifyObservers(model->START_GAME_EXP);
 }
 
 void MainWindow::delay(int ms)
