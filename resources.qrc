@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/background.jpg</file>
+        <file>resources/logo.png</file>
+        <file>resources/Fragenkatalog.csv</file>
+    </qresource>
+</RCC>
