@@ -38,9 +38,9 @@ SOURCES += \
     sharedcounter.cpp \
     viewobservable.cpp \
     gameobservable.cpp \
-    answer.cpp \
     mainwindow.cpp \
-    updateevent.cpp
+    updateevent.cpp \
+    answer.cpp
 
 # The associated header file of the project.
 HEADERS += \

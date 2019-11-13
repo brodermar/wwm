@@ -83,7 +83,8 @@ Question* Question::pullNewQuestion()
         std::string answerD = question[tempx+5];
         return new Question(newQuestion, answerA, answerB, answerC, answerD, check[0]);
     }
-    else{
+    else
+    {
         qDebug() << "Fehler beim lesen" << endl;
     }
 }

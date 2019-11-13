@@ -34,6 +34,7 @@ class MainWindow :
 
 public:
     MainWindow(QWidget* parent, Model* model);
+    MainWindow(Model* model) : MainWindow(0, model) {}
     ~MainWindow() override;
     void update() override;
     void CommandParser(string command);

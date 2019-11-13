@@ -1,24 +1,24 @@
 <RCC>
-    <qresource prefix="/Pics">
-        <file>Resouces/DialogCenterPush.png</file>
-        <file>Resouces/DialogCenterTrue.png</file>
-        <file>Resouces/DialogCenterWin.png</file>
-        <file>Resouces/DialogDefaultCenter.png</file>
-        <file>Resouces/DialogDefaultLeft.png</file>
-        <file>Resouces/DialogDefaultRight.png</file>
-        <file>Resouces/DialogLeftPush.png</file>
-        <file>Resouces/DialogLeftPush.smooth.png</file>
-        <file>Resouces/DialogLeftWin.png</file>
-        <file>Resouces/DialogRightPush.png</file>
-        <file>Resouces/DialogRightWin.png</file>
-        <file>Resouces/DialogTrueLeft.png</file>
-        <file>Resouces/DialogTrueRight.png</file>
-        <file>Resouces/HiddenButton.png</file>
-        <file>Resouces/home.png</file>
-        <file>Resouces/logo.png</file>
     <qresource prefix="/">
+        <file>resources/A16cow44+DL.png</file>
         <file>resources/background.jpg</file>
-        <file>resources/logo.png</file>
+        <file>resources/DialogCenterPush.png</file>
+        <file>resources/DialogCenterTrue.png</file>
+        <file>resources/DialogCenterWin.png</file>
+        <file>resources/DialogDefaultCenter.png</file>
+        <file>resources/DialogDefaultLeft.png</file>
+        <file>resources/DialogDefaultRight.png</file>
+        <file>resources/DialogLeftPush.png</file>
+        <file>resources/DialogLeftPush.smooth.png</file>
+        <file>resources/DialogLeftWin.png</file>
+        <file>resources/DialogRightPush.png</file>
+        <file>resources/DialogRightWin.png</file>
+        <file>resources/DialogTrueLeft.png</file>
+        <file>resources/DialogTrueRight.png</file>
         <file>resources/Fragenkatalog.csv</file>
+        <file>resources/HiddenButton.png</file>
+        <file>resources/home.png</file>
+        <file>resources/logo.png</file>
+        <file>resources/Thumbs.db</file>
     </qresource>
 </RCC>
