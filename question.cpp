@@ -48,7 +48,7 @@ Question* Question::pullNewQuestion()
 //    std::string answerC = "Der Esel";
 //    std::string answerD = "Der Fuchs";
 //    return new Question(question, answerA, answerB, answerC, answerD, 'c');
-    srand (time(NULL));
+    srand (time(nullptr));
     std::ifstream csvread;
     csvread.open(":resources/Fragenkatalog.csv", std::ios::in);
     if(csvread){
