@@ -37,11 +37,11 @@ void MainWindow::CommandParser(string command)
     qDebug() << "CommandParser() called" << endl;
     if(command == "ShowMenuScreen")
     {
-        ShowMenuScreen("Wer wird Millionär");
+        ShowMenuScreen("Starte Wer wird Millionär!!!");
     }
     else if(command == "ShowQuestionScreen")
     {
-        SetUpRound(command, command, command, command, command, command);
+        SetUpRound("gelbes Sofakissen", "alte Kiwi", "deine Nase", "Banane", "Was ist gelb und oft krum?", "50er");
         ShowQuestionScreen();
     }
     else if(command.find("ShowRightAnswer") !=  std::string::npos)
