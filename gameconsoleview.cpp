@@ -11,6 +11,13 @@ GameConsoleView::GameConsoleView(Model* model) :
     qDebug() << "initialized new GameConsoleView" << endl;
 }
 
+GameConsoleView::GameConsoleView(const GameConsoleView &gameConsoleView) :
+    ViewObservable(gameConsoleView)
+{
+    this->model = gameConsoleView.model;
+    this->counter = gameConsoleView.counter;
+}
+
 GameConsoleView::~GameConsoleView()
 {
     delete counter;
@@ -23,7 +30,6 @@ void GameConsoleView::operator()()
     promise<void> exitSignal;
     future<void> futureObj = exitSignal.get_future();
     thread paintingThread(&GameConsoleView::repeatedPaint, std::move(futureObj), model, counter);
-    stringstream sstr;
     string input;
     while (model->isProgramRunning())
     {
