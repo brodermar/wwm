@@ -82,6 +82,8 @@ public:
      */
     GameConsoleView(Model* model);
 
+    GameConsoleView(const GameConsoleView &gameConsoleView);
+
     ~GameConsoleView() override;
 
     /**

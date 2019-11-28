@@ -19,7 +19,7 @@ private:
     /**
      * @brief counter the unterlying counter
      */
-    unsigned int counter;
+    int* counter;
 
     /**
      * @brief mutex a std::mutex object to lock the access to the counter
@@ -31,7 +31,11 @@ public:
     /**
      * @brief SharedCounter constructs a new counter, it will be initialized with 0
      */
-    SharedCounter();
+    SharedCounter(int value);
+
+    SharedCounter() : SharedCounter(0) {}
+
+    SharedCounter(const SharedCounter &sharedCounter);
 
     ~SharedCounter();
 
@@ -42,7 +46,7 @@ public:
 
     /**
      * @brief decrease decreases the counter if possible
-     * @return
+     * @return true, if the action was successful
      */
     bool decrease();
 
